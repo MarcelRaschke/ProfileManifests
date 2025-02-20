@@ -2,40 +2,38 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>pfm_description</key>
+	<string>Use this section to define settings for certificate transparency.</string>
 	<key>pfm_description_reference</key>
 	<string>Certificate Preference payloads are designated by specifying com.apple.security.certificatetransparency as the PayloadType value.
 A Certificate Transparency payload controls Certificate Transparency enforcement. It can only appear in a device profile, not a user profile. You can include multiple Certificate Transparency payloads as needed.
 This payload does not require MDM or DEP enrollment.
 Available in iOS 12.1.1, MacOS 10.14.2, tvOS 12.1.1, and watchOS 5.1.1 and later.</string>
-	<key>pfm_description</key>
-	<string>Certificate Transparency settings</string>
 	<key>pfm_domain</key>
 	<string>com.apple.security.certificatetransparency</string>
 	<key>pfm_format_version</key>
 	<integer>1</integer>
 	<key>pfm_interaction</key>
 	<string>combined</string>
+	<key>pfm_ios_min</key>
+	<string>12.1.1</string>
 	<key>pfm_last_modified</key>
-	<date>2018-07-18T08:58:49Z</date>
+	<date>2024-03-01T15:25:39Z</date>
+	<key>pfm_macos_min</key>
+	<string>10.14.2</string>
 	<key>pfm_platforms</key>
 	<array>
 		<string>macOS</string>
 		<string>iOS</string>
 		<string>tvOS</string>
 	</array>
-	<key>pfm_macos_min</key>
-	<string>10.14.2</string>
-	<key>pfm_ios_min</key>
-	<string>12.1.1</string>
-	<key>pfm_tvos_min</key>
-	<string>12.1.1</string>
 	<key>pfm_subkeys</key>
 	<array>
 		<dict>
 			<key>pfm_default</key>
 			<string>Configures Certificate Transparency settings</string>
 			<key>pfm_description</key>
-			<string>Description of the payload.</string>
+			<string>The human-readable description of this payload. This description appears on the Detail screen.</string>
 			<key>pfm_description_reference</key>
 			<string>Optional. A human-readable description of this payload. This description is shown on the Detail screen.</string>
 			<key>pfm_name</key>
@@ -49,7 +47,7 @@ Available in iOS 12.1.1, MacOS 10.14.2, tvOS 12.1.1, and watchOS 5.1.1 and later
 			<key>pfm_default</key>
 			<string>Certificate Transparency</string>
 			<key>pfm_description</key>
-			<string>Name of the payload.</string>
+			<string>The human-readable name for the profile payload. The name appears on the Detail screen and doesn't need to be unique.</string>
 			<key>pfm_description_reference</key>
 			<string>A human-readable name for the profile payload. This name is displayed on the Detail screen. It does not have to be unique.</string>
 			<key>pfm_name</key>
@@ -65,7 +63,8 @@ Available in iOS 12.1.1, MacOS 10.14.2, tvOS 12.1.1, and watchOS 5.1.1 and later
 			<key>pfm_default</key>
 			<string>com.apple.security.certificatetransparency</string>
 			<key>pfm_description</key>
-			<string>A unique identifier for the payload, dot-delimited.  Usually root PayloadIdentifier+subidentifier</string>
+			<string>The reverse-DNS-style identifier for the payload. This identifier is usually the same as the TopLevel value, with an additional appended component. This string must be unique within the profile.
+During a profile replacement, the system updates payloads with the same 'PayloadIdentifier' and 'PayloadUUID' in the old and new profiles.</string>
 			<key>pfm_description_reference</key>
 			<string>A reverse-DNS-style identifier for the specific payload. It is usually the same identifier as the root-level PayloadIdentifier value with an additional component appended.</string>
 			<key>pfm_name</key>
@@ -81,7 +80,7 @@ Available in iOS 12.1.1, MacOS 10.14.2, tvOS 12.1.1, and watchOS 5.1.1 and later
 			<key>pfm_default</key>
 			<string>com.apple.security.certificatetransparency</string>
 			<key>pfm_description</key>
-			<string>The type of the payload, a reverse dns string.</string>
+			<string>The payload type, which each payload domain's reference page specifies.</string>
 			<key>pfm_description_reference</key>
 			<string>The payload type.</string>
 			<key>pfm_name</key>
@@ -97,7 +96,8 @@ Available in iOS 12.1.1, MacOS 10.14.2, tvOS 12.1.1, and watchOS 5.1.1 and later
 			<key>pfm_default</key>
 			<string></string>
 			<key>pfm_description</key>
-			<string>Unique identifier for the payload (format 01234567-89AB-CDEF-0123-456789ABCDEF)</string>
+			<string>The globally unique identifier for the payload. The actual content is unimportant, but must be globally unique. In macOS, use 'uuidgen' to generate UUIDs.
+During a profile replacement, the system updates payloads with the same 'PayloadIdentifier' and 'PayloadUUID' in the old and new profiles.</string>
 			<key>pfm_description_reference</key>
 			<string>A globally unique identifier for the payload. The actual content is unimportant, but it must be globally unique. In macOS, you can use uuidgen to generate reasonable UUIDs.</string>
 			<key>pfm_format</key>
@@ -115,12 +115,16 @@ Available in iOS 12.1.1, MacOS 10.14.2, tvOS 12.1.1, and watchOS 5.1.1 and later
 			<key>pfm_default</key>
 			<integer>1</integer>
 			<key>pfm_description</key>
-			<string>The version of the whole configuration profile.</string>
+			<string>The version of this specific payload.</string>
 			<key>pfm_description_reference</key>
 			<string>The version number of the individual payload.
 A profile can consist of payloads with different version numbers. For example, changes to the VPN software in iOS might introduce a new payload version to support additional features, but Mail payload versions would not necessarily change in the same release.</string>
 			<key>pfm_name</key>
 			<string>PayloadVersion</string>
+			<key>pfm_range_list</key>
+			<array>
+				<integer>1</integer>
+			</array>
 			<key>pfm_require</key>
 			<string>always</string>
 			<key>pfm_title</key>
@@ -130,7 +134,7 @@ A profile can consist of payloads with different version numbers. For example, c
 		</dict>
 		<dict>
 			<key>pfm_description</key>
-			<string>This value describes the issuing organization of the profile, as displayed to the user.</string>
+			<string>The human-readable string containing the name of the organization that provides the profile. This value doesn't need to match the organization payload value in the enclosing dictionary.</string>
 			<key>pfm_description_reference</key>
 			<string>Optional. A human-readable string containing the name of the organization that provided the profile.
 The payload organization for a payload need not match the payload organization in the enclosing profile.</string>
@@ -142,16 +146,11 @@ The payload organization for a payload need not match the payload organization i
 			<string>string</string>
 		</dict>
 		<dict>
-			<key>pfm_description_reference</key>
-			<string>Optional. List of domains where certificate transparency is disabled. A leading period can be used to match subdomains, but a domain matching rule must not match all domains within a top level domain (”.example.com” and ”.example.co.uk” are allowed while ”.com” and ”.co.uk” are not allowed).</string>
 			<key>pfm_description</key>
-			<string>List of domains where certificate transparency is disabled.</string>
+			<string>An array of strings representing the domains to be excluded from certificate transparency enforcement. A leading period (.) is supported to signify subdomains.
+Wildcard domains are not supported. If a leading period (.) is specified, the domain cannot be a top-level domain (for example, '.com' and '.co.uk' are disallowed).</string>
 			<key>pfm_name</key>
 			<string>DisabledForDomains</string>
-			<key>pfm_title</key>
-			<string>Disabled Domains</string>
-			<key>pfm_type</key>
-			<string>array</string>
 			<key>pfm_subkeys</key>
 			<array>
 				<dict>
@@ -159,61 +158,58 @@ The payload organization for a payload need not match the payload organization i
 					<string>string</string>
 				</dict>
 			</array>
+			<key>pfm_title</key>
+			<string>Disabled Domains</string>
+			<key>pfm_type</key>
+			<string>array</string>
 		</dict>
 		<dict>
+			<key>pfm_allowed_file_types</key>
+			<array>
+				<string>public.x509-certificate</string>
+			</array>
+			<key>pfm_description</key>
+			<string>An array of certificates for which certificate transparency is disabled. For Certificate Transparency enforcement to be disabled when this policy is set, one of the following conditions must be met:
+* The hash is of the server certificate's 'subjectPublicKeyInfo'.
+* The hash is of a 'subjectPublicKeyInfo' that appears in a CA certificate in the certificate chain; the CA certificate is constrained through the X.509v3 'nameConstraints' extension; one or more 'directoryName' 'nameConstraints' are present in the 'permittedSubtrees;' and the 'directoryName' contains an 'organizationName' attribute.
+* The hash is of a 'subjectPublicKeyInfo' that appears in a CA certificate in the certificate chain; the CA certificate has one or more 'organizationName' attributes in the certificate 'Subject;' and the server's certificate contains the same number of 'organizationName' attributes, in the same order, and with byte-for-byte identical values.</string>
 			<key>pfm_description_reference</key>
 			<string>Optional. A list of hashed subjectPublicKeyInfo dictionaries defining the certificates where certificate transparency is disabled. For certificate transparency enforcement to be disabled, one of the following conditions must be met:
 • The hash is of the server certificate's subjectPublicKeyInfo.
 • The hash is of a subjectPublicKeyInfo that appears in a CA certificate in the certificate chain, the CA certificate is constrained via the X. 509v3 nameConstraints extension, one or more directoryName nameConstraints are present in the permittedSubtrees, and the directoryName contains an organizationName attribute.
 • The hash is of a subjectPublicKeyInfo that appears in a CA certificate in the certificate chain, the CA certificate has one or more organizationName attributes in the certificate Subject, and the server's certificate contains the same number of organizationName attributes, in the same order, and with byte-for- byte identical values.</string>
-			<key>pfm_description</key>
-			<string>A list of certificate hashes for which certificate transparency is disabled.</string>
 			<key>pfm_name</key>
 			<string>DisabledForCerts</string>
-			<key>pfm_title</key>
-			<string>Disabled Certificates</string>
-			<key>pfm_allowed_file_types</key>
-			<array>
-				<string>public.x509-certificate</string>
-			</array>
-			<key>pfm_value_import_processor</key>
-			<string>com.apple.security.certificatetransparency</string>
-			<key>pfm_type</key>
-			<string>array</string>
 			<key>pfm_subkeys</key>
 			<array>
 				<dict>
 					<key>pfm_name</key>
 					<string>Cert</string>
-					<key>pfm_type</key>
-					<string>dictionary</string>
 					<key>pfm_subkeys</key>
 					<array>
 						<dict>
-							<key>pfm_hidden</key>
-							<string>all</string>
-							<key>pfm_range_list</key>
-							<array>
-								<string>sha256</string>
-							</array>
 							<key>pfm_default</key>
 							<string>sha256</string>
 							<key>pfm_description</key>
 							<string>Hash algorithm</string>
-							<key>pfm_description_reference</key>
-							<string>Required. Currently, must be "sha256".</string>
+							<key>pfm_hidden</key>
+							<string>all</string>
 							<key>pfm_name</key>
 							<string>Algorithm</string>
-							<key>pfm_type</key>
-							<string>string</string>
+							<key>pfm_range_list</key>
+							<array>
+								<string>sha256</string>
+							</array>
 							<key>pfm_require</key>
 							<string>always</string>
+							<key>pfm_type</key>
+							<string>string</string>
 						</dict>
 						<dict>
-							<key>pfm_description_reference</key>
-							<string>Required. Created by applying the specified hash algorithm to the DER- encoding of the certificate'sÂ subjectPublicKeyInfo.</string>
 							<key>pfm_description</key>
 							<string>Hash of the certificate's subjectPublicKeyInfo</string>
+							<key>pfm_format</key>
+							<string>^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$</string>
 							<key>pfm_name</key>
 							<string>Hash</string>
 							<key>pfm_type</key>
@@ -222,12 +218,18 @@ The payload organization for a payload need not match the payload organization i
 							<string>string</string>
 							<key>pfm_value_processor</key>
 							<string>base642data</string>
-							<key>pfm_format</key>
-							<string>^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$</string>
 						</dict>
 					</array>
+					<key>pfm_type</key>
+					<string>dictionary</string>
 				</dict>
 			</array>
+			<key>pfm_title</key>
+			<string>Disabled Certificates</string>
+			<key>pfm_type</key>
+			<string>array</string>
+			<key>pfm_value_import_processor</key>
+			<string>com.apple.security.certificatetransparency</string>
 		</dict>
 	</array>
 	<key>pfm_targets</key>
@@ -236,9 +238,83 @@ The payload organization for a payload need not match the payload organization i
 	</array>
 	<key>pfm_title</key>
 	<string>Certificate Transparency</string>
+	<key>pfm_tvos_min</key>
+	<string>12.1.1</string>
 	<key>pfm_unique</key>
 	<true/>
 	<key>pfm_version</key>
 	<integer>1</integer>
+	<key>pfmx_supported_oses</key>
+	<dict>
+		<key>iOS</key>
+		<dict>
+			<key>pfmx_allow_manual_install</key>
+			<true/>
+			<key>pfmx_introduced</key>
+			<string>12.1.1</string>
+			<key>pfmx_multiple</key>
+			<true/>
+			<key>pfmx_shared_ipad</key>
+			<dict>
+				<key>pfmx_device_channel</key>
+				<true/>
+				<key>pfmx_mode</key>
+				<string>allowed</string>
+				<key>pfmx_user_channel</key>
+				<false/>
+			</dict>
+			<key>pfmx_supervised</key>
+			<false/>
+			<key>pfmx_user_enrollment</key>
+			<dict>
+				<key>pfmx_mode</key>
+				<string>allowed</string>
+			</dict>
+		</dict>
+		<key>macOS</key>
+		<dict>
+			<key>pfmx_allow_manual_install</key>
+			<true/>
+			<key>pfmx_device_channel</key>
+			<true/>
+			<key>pfmx_introduced</key>
+			<string>10.14.2</string>
+			<key>pfmx_multiple</key>
+			<true/>
+			<key>pfmx_requires_dep</key>
+			<false/>
+			<key>pfmx_user_approved_mdm</key>
+			<false/>
+			<key>pfmx_user_channel</key>
+			<false/>
+			<key>pfmx_user_enrollment</key>
+			<dict>
+				<key>pfmx_mode</key>
+				<string>allowed</string>
+			</dict>
+		</dict>
+		<key>tvOS</key>
+		<dict>
+			<key>pfmx_allow_manual_install</key>
+			<true/>
+			<key>pfmx_introduced</key>
+			<string>12.1.1</string>
+			<key>pfmx_multiple</key>
+			<true/>
+			<key>pfmx_supervised</key>
+			<false/>
+		</dict>
+		<key>watchOS</key>
+		<dict>
+			<key>pfmx_allow_manual_install</key>
+			<true/>
+			<key>pfmx_introduced</key>
+			<string>5.1.1</string>
+			<key>pfmx_multiple</key>
+			<true/>
+			<key>pfmx_supervised</key>
+			<false/>
+		</dict>
+	</dict>
 </dict>
 </plist>

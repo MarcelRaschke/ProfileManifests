@@ -46,12 +46,26 @@
 			<key>path</key>
 			<string>Icons/ManagedPreferencesApple/com.apple.TimeMachine.png</string>
 		</dict>
+		<key>com.apple.dt.Xcode</key>
+		<dict>
+			<key>hash</key>
+			<string>568946afec7773f3d6c0187d83357b64</string>
+			<key>path</key>
+			<string>Icons/ManagedPreferencesApple/com.apple.dt.Xcode.png</string>
+		</dict>
 		<key>com.apple.finder</key>
 		<dict>
 			<key>hash</key>
 			<string>7b7425145502036f37c5609b2ae98586</string>
 			<key>path</key>
 			<string>Icons/ManagedPreferencesApple/com.apple.finder.png</string>
+		</dict>
+		<key>com.apple.freeform</key>
+		<dict>
+			<key>hash</key>
+			<string>6a6552725c45814f293ec0f1ebcf5f62</string>
+			<key>path</key>
+			<string>Icons/ManagedPreferencesApple/com.apple.freeform.png</string>
 		</dict>
 		<key>com.apple.iBooksX</key>
 		<dict>
@@ -140,6 +154,20 @@
 			<key>path</key>
 			<string>Icons/ManagedPreferencesApplications/MunkiReport.png</string>
 		</dict>
+		<key>SupportCompanion</key>
+		<dict>
+			<key>hash</key>
+			<string>498c7bdee3ea3e09cf77288442ab8740</string>
+			<key>path</key>
+			<string>Icons/ManagedPreferencesApplications/SupportCompanion.png</string>
+		</dict>
+		<key>com.1password.1password</key>
+		<dict>
+			<key>hash</key>
+			<string>5947bdd7b8eba82f7e771af7464746ae</string>
+			<key>path</key>
+			<string>Icons/ManagedPreferencesApplications/com.1password.1password.png</string>
+		</dict>
 		<key>com.ThomsonResearchSoft.EndNote</key>
 		<dict>
 			<key>hash</key>
@@ -153,6 +181,13 @@
 			<string>5274f3335092e6c8fbf7ad90990346bb</string>
 			<key>path</key>
 			<string>Icons/ManagedPreferencesApplications/com.agilebits.onepassword7.png</string>
+		</dict>
+		<key>com.alectrona.patch</key>
+		<dict>
+			<key>hash</key>
+			<string>5e94e30ded722510d96bf9e5a6827974</string>
+			<key>path</key>
+			<string>Icons/ManagedPreferencesApplications/com.alectrona.patch.png</string>
 		</dict>
 		<key>com.apple.Compressor</key>
 		<dict>
@@ -231,6 +266,27 @@
 			<key>path</key>
 			<string>Icons/ManagedPreferencesApplications/com.citrix.receiver.nomas.png</string>
 		</dict>
+		<key>com.cloudflare.warp</key>
+		<dict>
+			<key>hash</key>
+			<string>0dd232c944c2269a3ff036363a721ef3</string>
+			<key>path</key>
+			<string>Icons/ManagedPreferencesApplications/com.cloudflare.warp.png</string>
+		</dict>
+		<key>com.crowdstrike.falcon</key>
+		<dict>
+			<key>hash</key>
+			<string>d99e68aa00f1f23c0148d45877a101fb</string>
+			<key>path</key>
+			<string>Icons/ManagedPreferencesApplications/com.crowdstrike.falcon.png</string>
+		</dict>
+		<key>com.docker.config</key>
+		<dict>
+			<key>hash</key>
+			<string>616f5b55d742801f43522d96d79470a3</string>
+			<key>path</key>
+			<string>Icons/ManagedPreferencesApplications/com.docker.config.png</string>
+		</dict>
 		<key>com.fxfactory.FxFactory</key>
 		<dict>
 			<key>hash</key>
@@ -252,6 +308,13 @@
 			<key>path</key>
 			<string>Icons/ManagedPreferencesApplications/com.github.macadmins.Nudge.png</string>
 		</dict>
+		<key>com.github.macadmins.SupportCompanion</key>
+		<dict>
+			<key>hash</key>
+			<string>6adb81680df09c2b2cfd243113b2396f</string>
+			<key>path</key>
+			<string>Icons/ManagedPreferencesApplications/com.github.macadmins.SupportCompanion.png</string>
+		</dict>
 		<key>com.google.Chrome</key>
 		<dict>
 			<key>hash</key>
@@ -269,7 +332,7 @@
 		<key>com.google.drivefs.settings</key>
 		<dict>
 			<key>hash</key>
-			<string>e9d29bfd4659816ee48f32d4ab175a98</string>
+			<string>2ecef41ed6d57fe8c08a9be1c706dcbb</string>
 			<key>path</key>
 			<string>Icons/ManagedPreferencesApplications/com.google.drivefs.settings.png</string>
 		</dict>
@@ -279,6 +342,13 @@
 			<string>229c06fecc8127d74d3607ad7c70ef5f</string>
 			<key>path</key>
 			<string>Icons/ManagedPreferencesApplications/com.google.santa.png</string>
+		</dict>
+		<key>com.grammarly.ProjectLlama</key>
+		<dict>
+			<key>hash</key>
+			<string>dd00051f20031d2287fbea0fe691ecff</string>
+			<key>path</key>
+			<string>Icons/ManagedPreferencesApplications/com.grammarly.ProjectLlama.png</string>
 		</dict>
 		<key>com.hjuutilainen.MunkiAdmin</key>
 		<dict>
@@ -322,12 +392,47 @@
 			<key>path</key>
 			<string>Icons/ManagedPreferencesApplications/com.jamf.connect.verify.png</string>
 		</dict>
+		<key>com.jamf.setupmanager</key>
+		<dict>
+			<key>hash</key>
+			<string>eba222ef5713a8a2187d0f4d759bd63e</string>
+			<key>path</key>
+			<string>Icons/ManagedPreferencesApplications/com.jamf.setupmanager.png</string>
+		</dict>
+		<key>com.jamf.trust</key>
+		<dict>
+			<key>hash</key>
+			<string>e6e1dfa5cad0c9a7f4204d6c182dddc9</string>
+			<key>path</key>
+			<string>Icons/ManagedPreferencesApplications/com.jamf.trust.png</string>
+		</dict>
 		<key>com.jelockwood.pinpoint</key>
 		<dict>
 			<key>hash</key>
 			<string>5d9bf852011e1bd392c799659ba64823</string>
 			<key>path</key>
 			<string>Icons/ManagedPreferencesApplications/com.jelockwood.pinpoint.png</string>
+		</dict>
+		<key>com.jigsaw24.Elevate24</key>
+		<dict>
+			<key>hash</key>
+			<string>7ef64e6871762fe05774e0d2926da68f</string>
+			<key>path</key>
+			<string>Icons/ManagedPreferencesApplications/com.jigsaw24.Elevate24.png</string>
+		</dict>
+		<key>com.jigsaw24.ElevateSecurityLogs</key>
+		<dict>
+			<key>hash</key>
+			<string>7ef64e6871762fe05774e0d2926da68f</string>
+			<key>path</key>
+			<string>Icons/ManagedPreferencesApplications/com.jigsaw24.ElevateSecurityLogs.png</string>
+		</dict>
+		<key>com.keepersecurity.passwordmanager</key>
+		<dict>
+			<key>hash</key>
+			<string>e08ab12bbac5703ff8e2946f4481682e</string>
+			<key>path</key>
+			<string>Icons/ManagedPreferencesApplications/com.keepersecurity.passwordmanager.png</string>
 		</dict>
 		<key>com.macpaw.site.theunarchiver</key>
 		<dict>
@@ -455,12 +560,68 @@
 			<key>path</key>
 			<string>Icons/ManagedPreferencesApplications/com.microsoft.wdav.png</string>
 		</dict>
+		<key>com.northpolesec.santa</key>
+		<dict>
+			<key>hash</key>
+			<string>2121b19796cc9342602853f7d5f9f341</string>
+			<key>path</key>
+			<string>Icons/ManagedPreferencesApplications/com.northpolesec.santa.png</string>
+		</dict>
+		<key>com.okta.mobile</key>
+		<dict>
+			<key>hash</key>
+			<string>4ddf4b38aa64491a463bed5ab2081aa3</string>
+			<key>path</key>
+			<string>Icons/ManagedPreferencesApplications/com.okta.mobile.png</string>
+		</dict>
+		<key>com.okta.mobile.auth-service-extension</key>
+		<dict>
+			<key>hash</key>
+			<string>4ddf4b38aa64491a463bed5ab2081aa3</string>
+			<key>path</key>
+			<string>Icons/ManagedPreferencesApplications/com.okta.mobile.auth-service-extension.png</string>
+		</dict>
+		<key>com.papercut.printdeploy.client</key>
+		<dict>
+			<key>hash</key>
+			<string>4371bef74b4a7366c923e5d3f2997f77</string>
+			<key>path</key>
+			<string>Icons/ManagedPreferencesApplications/com.papercut.printdeploy.client.png</string>
+		</dict>
+		<key>com.parallels.dektop.managedprefs</key>
+		<dict>
+			<key>hash</key>
+			<string>191fc0997bb18d49770e151c7c605b73</string>
+			<key>path</key>
+			<string>Icons/ManagedPreferencesApplications/com.parallels.dektop.managedprefs.png</string>
+		</dict>
 		<key>com.pratikkumar.airserver-mac</key>
 		<dict>
 			<key>hash</key>
 			<string>204503eb071bf33f9f2373ca0e25e02b</string>
 			<key>path</key>
 			<string>Icons/ManagedPreferencesApplications/com.pratikkumar.airserver-mac.png</string>
+		</dict>
+		<key>com.secondsonconsulting.baseline</key>
+		<dict>
+			<key>hash</key>
+			<string>2240f5a4178e4850fbdefafef45fc5e4</string>
+			<key>path</key>
+			<string>Icons/ManagedPreferencesApplications/com.secondsonconsulting.baseline.png</string>
+		</dict>
+		<key>com.secondsonconsulting.renew</key>
+		<dict>
+			<key>hash</key>
+			<string>d13d3cae4e07554257681e2f3ffbc9e8</string>
+			<key>path</key>
+			<string>Icons/ManagedPreferencesApplications/com.secondsonconsulting.renew.png</string>
+		</dict>
+		<key>com.sentinelone.registration-token</key>
+		<dict>
+			<key>hash</key>
+			<string>a535fe654940ecc3cb56b25d916a48ce</string>
+			<key>path</key>
+			<string>Icons/ManagedPreferencesApplications/com.sentinelone.registration-token.png</string>
 		</dict>
 		<key>com.skype.skype</key>
 		<dict>
@@ -490,12 +651,40 @@
 			<key>path</key>
 			<string>Icons/ManagedPreferencesApplications/com.trusourcelabs.NoMAD.png</string>
 		</dict>
+		<key>com.twingate.macos</key>
+		<dict>
+			<key>hash</key>
+			<string>0472dc8a8ab0d84b40711c09cd8911ed</string>
+			<key>path</key>
+			<string>Icons/ManagedPreferencesApplications/com.twingate.macos.png</string>
+		</dict>
+		<key>com.twocanoes.xcreds</key>
+		<dict>
+			<key>hash</key>
+			<string>a3eb40cc11826a76d200ec74654f2b6a</string>
+			<key>path</key>
+			<string>Icons/ManagedPreferencesApplications/com.twocanoes.xcreds.png</string>
+		</dict>
 		<key>com.unity3d.UnityEditor5.x</key>
 		<dict>
 			<key>hash</key>
 			<string>ba8165593ac4ee7a33e526b786e95e13</string>
 			<key>path</key>
 			<string>Icons/ManagedPreferencesApplications/com.unity3d.UnityEditor5.x.png</string>
+		</dict>
+		<key>com.vpntracker.365</key>
+		<dict>
+			<key>hash</key>
+			<string>aec5bcae37a371e157141c82c07f5e55</string>
+			<key>path</key>
+			<string>Icons/ManagedPreferencesApplications/com.vpntracker.365.png</string>
+		</dict>
+		<key>com.zscaler.installparams</key>
+		<dict>
+			<key>hash</key>
+			<string>32090e00826f74d7e0d5252ada42eb44</string>
+			<key>path</key>
+			<string>Icons/ManagedPreferencesApplications/com.zscaler.installparams.png</string>
 		</dict>
 		<key>corp.sap.privileges</key>
 		<dict>
@@ -511,12 +700,33 @@
 			<key>path</key>
 			<string>Icons/ManagedPreferencesApplications/cx.c3.theunarchiver.png</string>
 		</dict>
+		<key>de.fau.rrze.NetworkShareMounter</key>
+		<dict>
+			<key>hash</key>
+			<string>121689f6a8bf1b90c7ef1f6079722ae9</string>
+			<key>path</key>
+			<string>Icons/ManagedPreferencesApplications/de.fau.rrze.NetworkShareMounter.png</string>
+		</dict>
 		<key>fr.handbrake.HandBrake</key>
 		<dict>
 			<key>hash</key>
 			<string>adc42d6f928b3be696bf0739ea9dfa04</string>
 			<key>path</key>
 			<string>Icons/ManagedPreferencesApplications/fr.handbrake.HandBrake.png</string>
+		</dict>
+		<key>io.tailscale.ipn.macos</key>
+		<dict>
+			<key>hash</key>
+			<string>8421305dde20b00c4f9980873d7151cf</string>
+			<key>path</key>
+			<string>Icons/ManagedPreferencesApplications/io.tailscale.ipn.macos.png</string>
+		</dict>
+		<key>io.tailscale.ipn.macsys</key>
+		<dict>
+			<key>hash</key>
+			<string>8421305dde20b00c4f9980873d7151cf</string>
+			<key>path</key>
+			<string>Icons/ManagedPreferencesApplications/io.tailscale.ipn.macsys.png</string>
 		</dict>
 		<key>menu.nomad.NoMADPro</key>
 		<dict>
@@ -1328,6 +1538,6 @@
 		</dict>
 	</dict>
 	<key>date</key>
-	<date>2022-04-06T00:12:38Z</date>
+	<date>2025-02-20T08:48:02Z</date>
 </dict>
 </plist>

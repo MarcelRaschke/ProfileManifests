@@ -6,12 +6,14 @@
 	<string>https://www.office.com</string>
 	<key>pfm_description</key>
 	<string>Microsoft AutoUpdate settings</string>
+	<key>pfm_documentation_url</key>
+	<string>https://learn.microsoft.com/en-us/microsoft-365-apps/mac/mau-preferences</string>
 	<key>pfm_domain</key>
 	<string>com.microsoft.autoupdate2</string>
 	<key>pfm_format_version</key>
 	<integer>1</integer>
 	<key>pfm_last_modified</key>
-	<date>2022-01-23T11:48:44Z</date>
+	<date>2024-12-16T19:42:12Z</date>
 	<key>pfm_platforms</key>
 	<array>
 		<string>macOS</string>
@@ -20,9 +22,21 @@
 	<array>
 		<dict>
 			<key>pfm_default</key>
+			<string>Configures Microsoft AutoUpdate settings</string>
+			<key>pfm_description</key>
+			<string>The human-readable description of this payload. This description appears on the Detail screen.</string>
+			<key>pfm_name</key>
+			<string>PayloadDescription</string>
+			<key>pfm_title</key>
+			<string>Payload Description</string>
+			<key>pfm_type</key>
+			<string>string</string>
+		</dict>
+		<dict>
+			<key>pfm_default</key>
 			<string>Microsoft AutoUpdate</string>
 			<key>pfm_description</key>
-			<string>Name of the payload</string>
+			<string>The human-readable name for the profile payload. The name appears on the Detail screen and doesn't need to be unique.</string>
 			<key>pfm_name</key>
 			<string>PayloadDisplayName</string>
 			<key>pfm_require</key>
@@ -36,7 +50,8 @@
 			<key>pfm_default</key>
 			<string>com.microsoft.autoupdate2</string>
 			<key>pfm_description</key>
-			<string>A unique identifier for the payload, dot-delimited.  Usually root PayloadIdentifier+subidentifier</string>
+			<string>The reverse-DNS-style identifier for the payload. This identifier is usually the same as the TopLevel value, with an additional appended component. This string must be unique within the profile.
+During a profile replacement, the system updates payloads with the same 'PayloadIdentifier' and 'PayloadUUID' in the old and new profiles.</string>
 			<key>pfm_name</key>
 			<string>PayloadIdentifier</string>
 			<key>pfm_require</key>
@@ -50,7 +65,7 @@
 			<key>pfm_default</key>
 			<string>com.microsoft.autoupdate2</string>
 			<key>pfm_description</key>
-			<string>The type of the payload, a reverse dns string</string>
+			<string>The payload type, which each payload domain's reference page specifies.</string>
 			<key>pfm_name</key>
 			<string>PayloadType</string>
 			<key>pfm_require</key>
@@ -64,7 +79,8 @@
 			<key>pfm_default</key>
 			<string></string>
 			<key>pfm_description</key>
-			<string>Unique identifier for the payload (format 01234567-89AB-CDEF-0123-456789ABCDEF)</string>
+			<string>The globally unique identifier for the payload. The actual content is unimportant, but must be globally unique. In macOS, use 'uuidgen' to generate UUIDs.
+During a profile replacement, the system updates payloads with the same 'PayloadIdentifier' and 'PayloadUUID' in the old and new profiles.</string>
 			<key>pfm_format</key>
 			<string>^[0-9A-Za-z]{8}-[0-9A-Za-z]{4}-[0-9A-Za-z]{4}-[0-9A-Za-z]{4}-[0-9A-Za-z]{12}$</string>
 			<key>pfm_name</key>
@@ -80,9 +96,13 @@
 			<key>pfm_default</key>
 			<integer>1</integer>
 			<key>pfm_description</key>
-			<string>The version of the whole configuration profile.</string>
+			<string>The version of this specific payload.</string>
 			<key>pfm_name</key>
 			<string>PayloadVersion</string>
+			<key>pfm_range_list</key>
+			<array>
+				<integer>1</integer>
+			</array>
 			<key>pfm_require</key>
 			<string>always</string>
 			<key>pfm_title</key>
@@ -91,14 +111,12 @@
 			<string>integer</string>
 		</dict>
 		<dict>
-			<key>pfm_default</key>
-			<string>Configures Microsoft AutoUpdate settings</string>
 			<key>pfm_description</key>
-			<string>Description of the payload</string>
+			<string>The human-readable string containing the name of the organization that provides the profile. This value doesn't need to match the organization payload value in the enclosing dictionary.</string>
 			<key>pfm_name</key>
-			<string>PayloadDescription</string>
+			<string>PayloadOrganization</string>
 			<key>pfm_title</key>
-			<string>Payload Description</string>
+			<string>Payload Organization</string>
 			<key>pfm_type</key>
 			<string>string</string>
 		</dict>
@@ -110,11 +128,16 @@
 				<string>General</string>
 				<string>Applications</string>
 				<string>Scheduled Updates</string>
+				<string>Update Deferral</string>
 			</array>
 			<key>pfm_require</key>
 			<string>always</string>
 			<key>pfm_segments</key>
 			<dict>
+				<key>Applications</key>
+				<array>
+					<string>Applications</string>
+				</array>
 				<key>General</key>
 				<array>
 					<string>AcknowledgedDataCollectionPolicy</string>
@@ -128,18 +151,21 @@
 					<string>StartDaemonOnAppLaunch</string>
 					<string>IgnoreUIOpenAfterInstall</string>
 					<string>UpdateCache</string>
+					<string>UpdateCheckInterval</string>
 					<string>UpdateCheckFrequency</string>
 					<string>UpdateDeadline.DaysBeforeForcedQuit</string>
+					<string>UpdateDeadline.FinalCountDown</string>
 					<string>UpdateDeadline.StartAutomaticUpdates</string>
 					<string>UpdaterOptimization</string>
-				</array>
-				<key>Applications</key>
-				<array>
-					<string>Applications</string>
 				</array>
 				<key>Scheduled Updates</key>
 				<array>
 					<string>UpdateDeadline.ApplicationsForcedUpdateSchedule</string>
+				</array>
+				<key>Update Deferral</key>
+				<array>
+					<string>OptionalUpdatesDeferralsDays</string>
+					<string>OptionalUpdatesDeferrals</string>
 				</array>
 			</dict>
 			<key>pfm_type</key>
@@ -156,10 +182,6 @@
 			<string>https://docs.microsoft.com/en-us/deployoffice/privacy/mac-privacy-preferences#preference-setting-for-the-required-data-notice-dialog-for-microsoft-autoupdate</string>
 			<key>pfm_name</key>
 			<string>AcknowledgedDataCollectionPolicy</string>
-			<key>pfm_title</key>
-			<string>Acknowledged Data Collection Policy</string>
-			<key>pfm_type</key>
-			<string>string</string>
 			<key>pfm_range_list</key>
 			<array>
 				<string>RequiredDataOnly</string>
@@ -167,9 +189,13 @@
 			</array>
 			<key>pfm_range_list_titles</key>
 			<array>
-				<string>RequiredDataOnly</string>
-				<string>RequiredAndOptionalData</string>
+				<string>Required Data Only</string>
+				<string>Required And Optional Data (removed in version 4.70)</string>
 			</array>
+			<key>pfm_title</key>
+			<string>Acknowledged Data Collection Policy</string>
+			<key>pfm_type</key>
+			<string>string</string>
 		</dict>
 		<dict>
 			<key>pfm_app_min</key>
@@ -232,7 +258,7 @@
 			<false/>
 			<key>pfm_description</key>
 			<string>Set this option to disable the "Join the Office Insider Program..." checkbox.</string>
-			<key>pfm_description_reference</key>			
+			<key>pfm_description_reference</key>
 			<string>Controls whether the user can change the Insider opt- in. If the value is set to TRUE, the user interface is disabled for the user.</string>
 			<key>pfm_documentation_url</key>
 			<string>https://macadmins.software/docs/MAU_38.pdf</string>
@@ -350,7 +376,7 @@ Writes logs to: /Library/Logs/Microsoft/autoupdate.log</string>
 			<key>pfm_description</key>
 			<string>Enable this option to trigger the MAU Daemon when other Office applications are launched.</string>
 			<key>pfm_description_reference</key>
-			<string>Controls whether the ‘Microsoft AU Daemon' should be launched when an Office application is launched. If this value is set to 0, updates will not be detected, regardless of the ‘HowToCheck' preference, and users will need to use the Help -> Check for Updates menu option to see if updates are available.</string>
+			<string>Controls whether the ‘Microsoft AU Daemon' should be launched when an Office application is launched. If this value is set to 0, updates will not be detected, regardless of the ‘HowToCheck' preference, and users will need to use the Help -&gt; Check for Updates menu option to see if updates are available.</string>
 			<key>pfm_documentation_url</key>
 			<string>https://macadmins.software/docs/MAU_38.pdf</string>
 			<key>pfm_name</key>
@@ -396,6 +422,26 @@ Writes logs to: /Library/Logs/Microsoft/autoupdate.log</string>
 		</dict>
 		<dict>
 			<key>pfm_app_min</key>
+			<string>4.76</string>
+			<key>pfm_default</key>
+			<integer>780</integer>
+			<key>pfm_description</key>
+			<string>Specifies the number of minutes between checking for updates. Default is set to check every 13 hours.</string>
+			<key>pfm_documentation_url</key>
+			<string>https://learn.microsoft.com/en-us/microsoft-365-apps/mac/mau-preferences#updatecheckinterval</string>
+			<key>pfm_name</key>
+			<string>UpdateCheckInterval</string>
+			<key>pfm_title</key>
+			<string>Update Check Interval</string>
+			<key>pfm_type</key>
+			<string>integer</string>
+			<key>pfm_value_unit</key>
+			<string>Minutes</string>
+		</dict>
+		<dict>
+			<key>pfm_app_deprecated</key>
+			<string>4.76</string>
+			<key>pfm_app_min</key>
 			<string>3.9.1</string>
 			<key>pfm_default</key>
 			<integer>720</integer>
@@ -434,6 +480,26 @@ Writes logs to: /Library/Logs/Microsoft/autoupdate.log</string>
 		</dict>
 		<dict>
 			<key>pfm_app_min</key>
+			<string>4.48</string>
+			<key>pfm_default</key>
+			<integer>60</integer>
+			<key>pfm_description</key>
+			<string>How many minutes is the final countdown timer once the update deadline is reached.</string>
+			<key>pfm_description_reference</key>
+			<string>IT admins can now override the default deadline time of 60 minutes through the UpdateDeadline.FinalCountDown preference</string>
+			<key>pfm_documentation_url</key>
+			<string>https://docs.microsoft.com/en-us/officeupdates/release-history-microsoft-autoupdate#june-2022-release</string>
+			<key>pfm_name</key>
+			<string>UpdateDeadline.FinalCountDown</string>
+			<key>pfm_title</key>
+			<string>Update Deadline: Final Countdown Timer</string>
+			<key>pfm_type</key>
+			<string>integer</string>
+			<key>pfm_value_unit</key>
+			<string>Minutes</string>
+		</dict>
+		<dict>
+			<key>pfm_app_min</key>
 			<string>4.13</string>
 			<key>pfm_default</key>
 			<integer>3</integer>
@@ -446,7 +512,7 @@ Writes logs to: /Library/Logs/Microsoft/autoupdate.log</string>
 			<key>pfm_name</key>
 			<string>UpdateDeadline.StartAutomaticUpdates</string>
 			<key>pfm_note</key>
-		<string>This setting also controls when the new MAU Deadline dialog will appear for users. Depending the configuration of "HowToCheck" setting this value too low could prevent your users from seeing any notice before the 60 minute forced update countdown begins.</string>
+			<string>This setting also controls when the new MAU Deadline dialog will appear for users. Depending the configuration of "HowToCheck" setting this value too low could prevent your users from seeing any notice before the 60 minute forced update countdown begins.</string>
 			<key>pfm_title</key>
 			<string>Update Deadline: Start Automatic Updates</string>
 			<key>pfm_type</key>
@@ -474,6 +540,153 @@ Writes logs to: /Library/Logs/Microsoft/autoupdate.log</string>
 			<string>Updater Optimization</string>
 			<key>pfm_type</key>
 			<string>string</string>
+		</dict>
+		<dict>
+			<key>pfm_app_min</key>
+			<string>4.68.1</string>
+			<key>pfm_description</key>
+			<string>Global number of days after a release for which updates and offers to update will be postponed.</string>
+			<key>pfm_documentation_url</key>
+			<string>https://learn.microsoft.com/en-us/deployoffice/mac/mau-deferred-updates#global-deferral-days-setting</string>
+			<key>pfm_name</key>
+			<string>OptionalUpdatesDeferralsDays</string>
+			<key>pfm_range_max</key>
+			<integer>28</integer>
+			<key>pfm_range_min</key>
+			<integer>1</integer>
+			<key>pfm_title</key>
+			<string>Global Deferral Days</string>
+			<key>pfm_type</key>
+			<string>integer</string>
+		</dict>
+		<dict>
+			<key>pfm_app_min</key>
+			<string>4.68.1</string>
+			<key>pfm_description</key>
+			<string>Number of days after a release for which updates and offers to update will be postponed, per individual app. This setting takes precedence over the global setting.</string>
+			<key>pfm_documentation_url</key>
+			<string>https://learn.microsoft.com/en-us/deployoffice/mac/mau-deferred-updates#app-specific-deferral-days-setting</string>
+			<key>pfm_name</key>
+			<string>OptionalUpdatesDeferrals</string>
+			<key>pfm_subkeys</key>
+			<array>
+				<dict>
+					<key>pfm_description</key>
+					<string>Number of days after a release for which updates and offers to update will be postponed, per individual app. This setting takes precedence over the global setting.</string>
+					<key>pfm_documentation_url</key>
+					<string>https://learn.microsoft.com/en-us/deployoffice/mac/mau-deferred-updates#app-specific-deferral-days-setting</string>
+					<key>pfm_name</key>
+					<string>DeferralDays</string>
+					<key>pfm_subkeys</key>
+					<array>
+						<dict>
+							<key>pfm_name</key>
+							<string>{{key}}</string>
+							<key>pfm_range_list</key>
+							<array>
+								<string>XCEL2019</string>
+								<string>IMCP01</string>
+								<string>OLIC02</string>
+								<string>MSau04</string>
+								<string>WDAVCONSUMER</string>
+								<string>WDAV00</string>
+								<string>WDAVSHIM</string>
+								<string>ONDR18</string>
+								<string>ONMC2019</string>
+								<string>OPIM2019</string>
+								<string>PPT32019</string>
+								<string>MSQA01</string>
+								<string>MSRD10</string>
+								<string>MSRH01</string>
+								<string>MSFB16</string>
+								<string>TEAMS10</string>
+								<string>TEAMS21</string>
+								<string>MSWD2019</string>
+							</array>
+							<key>pfm_range_list_allow_custom_value</key>
+							<true/>
+							<key>pfm_title</key>
+							<string>Application Identifier</string>
+							<key>pfm_type</key>
+							<string>string</string>
+							<key>pfm_value_unique</key>
+							<true/>
+						</dict>
+						<dict>
+							<key>pfm_name</key>
+							<string>{{value}}</string>
+							<key>pfm_title</key>
+							<string>Number of Days</string>
+							<key>pfm_type</key>
+							<string>integer</string>
+						</dict>
+					</array>
+					<key>pfm_title</key>
+					<string>App Specific Deferral Days</string>
+					<key>pfm_type</key>
+					<string>dictionary</string>
+				</dict>
+				<dict>
+					<key>pfm_description</key>
+					<string>Upper limits to the update version, per individual app. Discovered updates are offered/applied to and including the specified version.</string>
+					<key>pfm_documentation_url</key>
+					<string>https://learn.microsoft.com/en-us/deployoffice/mac/mau-deferred-updates#deferral-version</string>
+					<key>pfm_name</key>
+					<string>DeferralVersions</string>
+					<key>pfm_subkeys</key>
+					<array>
+						<dict>
+							<key>pfm_name</key>
+							<string>{{key}}</string>
+							<key>pfm_range_list</key>
+							<array>
+								<string>XCEL2019</string>
+								<string>IMCP01</string>
+								<string>OLIC02</string>
+								<string>MSau04</string>
+								<string>WDAVCONSUMER</string>
+								<string>WDAV00</string>
+								<string>WDAVSHIM</string>
+								<string>ONDR18</string>
+								<string>ONMC2019</string>
+								<string>OPIM2019</string>
+								<string>PPT32019</string>
+								<string>MSQA01</string>
+								<string>MSRD10</string>
+								<string>MSRH01</string>
+								<string>MSFB16</string>
+								<string>TEAMS10</string>
+								<string>TEAMS21</string>
+								<string>MSWD2019</string>
+							</array>
+							<key>pfm_range_list_allow_custom_value</key>
+							<true/>
+							<key>pfm_title</key>
+							<string>Application Identifier</string>
+							<key>pfm_type</key>
+							<string>string</string>
+							<key>pfm_value_unique</key>
+							<true/>
+						</dict>
+						<dict>
+							<key>pfm_name</key>
+							<string>{{value}}</string>
+							<key>pfm_title</key>
+							<string>Version</string>
+							<key>pfm_type</key>
+							<string>integer</string>
+						</dict>
+					</array>
+					<key>pfm_title</key>
+					<string>App Specific Deferral Versions</string>
+					<key>pfm_type</key>
+					<string>dictionary</string>
+				</dict>
+			</array>
+			<key>pfm_title</key>
+			<string>App Specific Deferral</string>
+			<key>pfm_type</key>
+			<string>dictionary</string>
 		</dict>
 		<dict>
 			<key>pfm_app_min</key>
@@ -557,9 +770,9 @@ Writes logs to: /Library/Logs/Microsoft/autoupdate.log</string>
 				</dict>
 				<dict>
 					<key>pfm_description</key>
-					<string>Register /Applications/Microsoft Defender ATP.app.</string>
+					<string>Register /Applications/Microsoft Defender.app.</string>
 					<key>pfm_name</key>
-					<string>/Applications/Microsoft Defender ATP.app</string>
+					<string>/Applications/Microsoft Defender.app</string>
 					<key>pfm_subkeys</key>
 					<array>
 						<dict>
@@ -970,6 +1183,73 @@ Writes logs to: /Library/Logs/Microsoft/autoupdate.log</string>
 					<string>dictionary</string>
 				</dict>
 				<dict>
+					<key>pfm_app_min</key>
+					<string>4.75</string>
+					<key>pfm_description</key>
+					<string>Register /Applications/Windows App.app.</string>
+					<key>pfm_name</key>
+					<string>/Applications/Windows App.app</string>
+					<key>pfm_subkeys</key>
+					<array>
+						<dict>
+							<key>pfm_default</key>
+							<string>MSRD10</string>
+							<key>pfm_name</key>
+							<string>Application ID</string>
+							<key>pfm_range_list</key>
+							<array>
+								<string>MSRD10</string>
+							</array>
+							<key>pfm_require</key>
+							<string>always</string>
+							<key>pfm_title</key>
+							<string>Application ID</string>
+							<key>pfm_type</key>
+							<string>string</string>
+						</dict>
+						<dict>
+							<key>pfm_default</key>
+							<integer>1033</integer>
+							<key>pfm_hidden</key>
+							<string>all</string>
+							<key>pfm_name</key>
+							<string>LCID</string>
+							<key>pfm_range_list</key>
+							<array>
+								<integer>1033</integer>
+							</array>
+							<key>pfm_require</key>
+							<string>always</string>
+							<key>pfm_title</key>
+							<string>Language Code ID</string>
+							<key>pfm_type</key>
+							<string>integer</string>
+						</dict>
+						<dict>
+							<key>pfm_app_min</key>
+							<string>4.13</string>
+							<key>pfm_description</key>
+							<string>Force quit this application and update X number of days after MAU first detects the update on each computer. Can be used in conjunction with the higher level option of the same setting for more restrictive per-application updating.</string>
+							<key>pfm_description_reference</key>
+							<string>If you have specified a deadline for all applications, you can still configure a more specific deadline for one of the applications. For example, you can configure a deadline of 7 days for all applications, and then specify that the deadline for Excel is 4 days.</string>
+							<key>pfm_documentation_url</key>
+							<string>https://docs.microsoft.com/en-us/deployoffice/mac/mau-deadline#configure-a-deadline-for-a-certain-number-of-days-after-the-update-is-detected</string>
+							<key>pfm_name</key>
+							<string>UpdateDeadline.DaysBeforeForcedQuit</string>
+							<key>pfm_title</key>
+							<string>Update Deadline: Days Before Forced Quit</string>
+							<key>pfm_type</key>
+							<string>integer</string>
+							<key>pfm_value_unit</key>
+							<string>Days</string>
+						</dict>
+					</array>
+					<key>pfm_title</key>
+					<string>Windows App</string>
+					<key>pfm_type</key>
+					<string>dictionary</string>
+				</dict>
+				<dict>
 					<key>pfm_description</key>
 					<string>Register /Applications/Microsoft Remote Desktop.app.</string>
 					<key>pfm_name</key>
@@ -1049,6 +1329,12 @@ Writes logs to: /Library/Logs/Microsoft/autoupdate.log</string>
 							<key>pfm_range_list</key>
 							<array>
 								<string>TEAMS10</string>
+								<string>TEAMS21</string>
+							</array>
+							<key>pfm_range_list_titles</key>
+							<array>
+								<string>Teams 1.0 classic</string>
+								<string>Teams 2.1</string>
 							</array>
 							<key>pfm_require</key>
 							<string>always</string>
@@ -1829,6 +2115,65 @@ Writes logs to: /Library/Logs/Microsoft/autoupdate.log</string>
 				</dict>
 				<dict>
 					<key>pfm_app_min</key>
+					<string>4.75</string>
+					<key>pfm_description</key>
+					<string>Schedule an update for Windows App.</string>
+					<key>pfm_documentation_url</key>
+					<string>https://docs.microsoft.com/en-us/deployoffice/mac/mau-deadline#configure-a-deadline-for-a-specific-date-and-time</string>
+					<key>pfm_name</key>
+					<string>/Applications/Windows App.app</string>
+					<key>pfm_subkeys</key>
+					<array>
+						<dict>
+							<key>pfm_default</key>
+							<string>MSRD10</string>
+							<key>pfm_name</key>
+							<string>Application ID</string>
+							<key>pfm_range_list</key>
+							<array>
+								<string>MSRD10</string>
+							</array>
+							<key>pfm_require</key>
+							<string>always</string>
+							<key>pfm_title</key>
+							<string>Application ID</string>
+							<key>pfm_type</key>
+							<string>string</string>
+						</dict>
+						<dict>
+							<key>pfm_description</key>
+							<string>The date and time to force the update.</string>
+							<key>pfm_name</key>
+							<string>ForcedUpdateDate</string>
+							<key>pfm_require</key>
+							<string>always</string>
+							<key>pfm_title</key>
+							<string>Forced Update Date</string>
+							<key>pfm_type</key>
+							<string>date</string>
+						</dict>
+						<dict>
+							<key>pfm_description</key>
+							<string>The version of the update.</string>
+							<key>pfm_name</key>
+							<string>ForcedUpdateVersion</string>
+							<key>pfm_require</key>
+							<string>always</string>
+							<key>pfm_title</key>
+							<string>Forced Update Version</string>
+							<key>pfm_type</key>
+							<string>string</string>
+							<key>pfm_value_placeholder</key>
+							<string>10.2.13</string>
+						</dict>
+					</array>
+					<key>pfm_title</key>
+					<string>Windows App</string>
+					<key>pfm_type</key>
+					<string>dictionary</string>
+				</dict>
+				<dict>
+					<key>pfm_app_min</key>
 					<string>4.13</string>
 					<key>pfm_description</key>
 					<string>Schedule an update for Microsoft Remote Desktop.</string>
@@ -2204,6 +2549,6 @@ Writes logs to: /Library/Logs/Microsoft/autoupdate.log</string>
 	<key>pfm_unique</key>
 	<true/>
 	<key>pfm_version</key>
-	<integer>14</integer>
+	<integer>18</integer>
 </dict>
 </plist>

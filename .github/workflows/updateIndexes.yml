@@ -3,11 +3,14 @@ name: Update indexes
 on:
   push:
     branches:
+      - main
       - master
 
 jobs:
   build:
-    if: github.repository == 'ProfileCreator/ProfileManifests'
+    permissions:
+      contents: write
+    if: github.repository == 'ProfileManifests/ProfileManifests'
     runs-on: ubuntu-latest
     steps:
       - name: Clone repository
@@ -20,8 +23,8 @@ jobs:
         working-directory: clone
         run: |
           ./updateIndexes.py
-          git config user.name github-actions
-          git config user.email github-actions@github.com
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
           git add -A
           git commit -am "Update indexes" || true
           git push --set-upstream origin master || true

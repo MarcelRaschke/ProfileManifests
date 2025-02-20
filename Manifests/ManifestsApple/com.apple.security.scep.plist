@@ -10,8 +10,12 @@
 	<integer>1</integer>
 	<key>pfm_interaction</key>
 	<string>combined</string>
+	<key>pfm_ios_min</key>
+	<string>4.0</string>
 	<key>pfm_last_modified</key>
-	<date>2021-12-22T05:49:22Z</date>
+	<date>2024-09-03T15:13:17Z</date>
+	<key>pfm_macos_min</key>
+	<string>10.7</string>
 	<key>pfm_platforms</key>
 	<array>
 		<string>iOS</string>
@@ -22,9 +26,9 @@
 	<array>
 		<dict>
 			<key>pfm_default</key>
-			<string>Configures SCEP settings</string>
+			<string>Use this section to define settings for configuration access to SCEP servers.</string>
 			<key>pfm_description</key>
-			<string>Description of the payload</string>
+			<string>The human-readable description of this payload. This description appears on the Detail screen.</string>
 			<key>pfm_name</key>
 			<string>PayloadDescription</string>
 			<key>pfm_title</key>
@@ -36,7 +40,7 @@
 			<key>pfm_default</key>
 			<string>SCEP</string>
 			<key>pfm_description</key>
-			<string>Name of the payload</string>
+			<string>The human-readable name for the profile payload. The name appears on the Detail screen and doesn't need to be unique.</string>
 			<key>pfm_name</key>
 			<string>PayloadDisplayName</string>
 			<key>pfm_require</key>
@@ -50,7 +54,8 @@
 			<key>pfm_default</key>
 			<string>com.apple.security.scep</string>
 			<key>pfm_description</key>
-			<string>A unique identifier for the payload, dot-delimited.  Usually root PayloadIdentifier+subidentifier</string>
+			<string>The reverse-DNS-style identifier for the payload. This identifier is usually the same as the TopLevel value, with an additional appended component. This string must be unique within the profile.
+During a profile replacement, the system updates payloads with the same 'PayloadIdentifier' and 'PayloadUUID' in the old and new profiles.</string>
 			<key>pfm_name</key>
 			<string>PayloadIdentifier</string>
 			<key>pfm_require</key>
@@ -64,7 +69,7 @@
 			<key>pfm_default</key>
 			<string>com.apple.security.scep</string>
 			<key>pfm_description</key>
-			<string>The type of the payload, a reverse dns string</string>
+			<string>The payload type, which each payload domain's reference page specifies.</string>
 			<key>pfm_name</key>
 			<string>PayloadType</string>
 			<key>pfm_require</key>
@@ -78,7 +83,8 @@
 			<key>pfm_default</key>
 			<string></string>
 			<key>pfm_description</key>
-			<string>Unique identifier for the payload (format 01234567-89AB-CDEF-0123-456789ABCDEF)</string>
+			<string>The globally unique identifier for the payload. The actual content is unimportant, but must be globally unique. In macOS, use 'uuidgen' to generate UUIDs.
+During a profile replacement, the system updates payloads with the same 'PayloadIdentifier' and 'PayloadUUID' in the old and new profiles.</string>
 			<key>pfm_format</key>
 			<string>^[0-9A-Za-z]{8}-[0-9A-Za-z]{4}-[0-9A-Za-z]{4}-[0-9A-Za-z]{4}-[0-9A-Za-z]{12}$</string>
 			<key>pfm_name</key>
@@ -94,9 +100,13 @@
 			<key>pfm_default</key>
 			<integer>1</integer>
 			<key>pfm_description</key>
-			<string>The version of the whole configuration profile.</string>
+			<string>The version of this specific payload.</string>
 			<key>pfm_name</key>
 			<string>PayloadVersion</string>
+			<key>pfm_range_list</key>
+			<array>
+				<integer>1</integer>
+			</array>
 			<key>pfm_require</key>
 			<string>always</string>
 			<key>pfm_title</key>
@@ -106,7 +116,7 @@
 		</dict>
 		<dict>
 			<key>pfm_description</key>
-			<string>This value describes the issuing organization of the profile, as displayed to the user</string>
+			<string>The human-readable string containing the name of the organization that provides the profile. This value doesn't need to match the organization payload value in the enclosing dictionary.</string>
 			<key>pfm_name</key>
 			<string>PayloadOrganization</string>
 			<key>pfm_title</key>
@@ -116,7 +126,7 @@
 		</dict>
 		<dict>
 			<key>pfm_description</key>
-			<string>This dictionary contains the payload contents</string>
+			<string>A dictionary containing the SCEP information.</string>
 			<key>pfm_name</key>
 			<string>PayloadContent</string>
 			<key>pfm_require</key>
@@ -125,7 +135,9 @@
 			<array>
 				<dict>
 					<key>pfm_description</key>
-					<string>The base URL for the SCEP server</string>
+					<string>The SCEP URL. See Over-the-Air Profile Delivery and Configuration for more information about SCEP.</string>
+					<key>pfm_macos_min</key>
+					<string>10.7</string>
 					<key>pfm_name</key>
 					<string>URL</string>
 					<key>pfm_require</key>
@@ -134,10 +146,18 @@
 					<string>URL</string>
 					<key>pfm_type</key>
 					<string>string</string>
+					<key>pfmx_supported_oses</key>
+					<dict>
+						<key>macOS</key>
+						<dict>
+							<key>pfmx_introduced</key>
+							<string>10.7</string>
+						</dict>
+					</dict>
 				</dict>
 				<dict>
 					<key>pfm_description</key>
-					<string>Any string that is understood by the SCEP server. For example, it could be a domain name like example.org. If a certificate authority has multiple CA certificates this field can be used to distinguish which is required.</string>
+					<string>A string that's understood by the SCEP server; for example, a domain name like example.org. If a certificate authority has multiple CA certificates, this field can be used to distinguish which is required.</string>
 					<key>pfm_name</key>
 					<string>Name</string>
 					<key>pfm_title</key>
@@ -147,7 +167,9 @@
 				</dict>
 				<dict>
 					<key>pfm_description</key>
-					<string>The representation of a X.500 name represented as an array of OID and value. OIDs can be represented as dotted numbers, with shortcuts for country (C), locality (L), state (ST), organization (O), organizational unit (OU), and common name (CN).</string>
+					<string>The representation of an X.500 name as an array of OID and value.
+For example, '/C=US/O=Apple Inc./CN=foo/1.2.5.3=bar' translates to '[ [ [“C”, “US”] ], [ [“O”, “Apple Inc.'] ], …, [ [ “1.2.5.3”, “bar” ] ] ]'.
+OIDs can be represented as dotted numbers, with shortcuts for country (C), locality (L), state (ST), organization (O), organizational unit (OU), and common name (CN).</string>
 					<key>pfm_format</key>
 					<string>(,?[^=,]+=[^=,]+(,|$))</string>
 					<key>pfm_name</key>
@@ -166,29 +188,19 @@
 									<string>An array representing an OID and value pair.</string>
 									<key>pfm_name</key>
 									<string>SCEPSubjectArrayPair</string>
-									<key>pfm_repetition_max</key>
-									<integer>2</integer>
-									<key>pfm_repetition_min</key>
-									<integer>2</integer>
 									<key>pfm_subkeys</key>
 									<array>
 										<dict>
 											<key>pfm_description</key>
-											<string>One item in the array representing a OID</string>
+											<string>One item in the array representing a pair of OID and value</string>
 											<key>pfm_name</key>
-											<string>OID</string>
+											<string>SCEPSubjectArrayPairItem</string>
+											<key>pfm_repetition_max</key>
+											<integer>2</integer>
+											<key>pfm_repetition_min</key>
+											<integer>2</integer>
 											<key>pfm_title</key>
-											<string>OID</string>
-											<key>pfm_type</key>
-											<string>string</string>
-										</dict>
-										<dict>
-											<key>pfm_description</key>
-											<string>One item in the array representing a value</string>
-											<key>pfm_name</key>
-											<string>Value</string>
-											<key>pfm_title</key>
-											<string>Value</string>
+											<string>SCEP Subject Array Pair Item</string>
 											<key>pfm_type</key>
 											<string>string</string>
 										</dict>
@@ -205,123 +217,123 @@
 							<string>array</string>
 						</dict>
 					</array>
-					<key>pfm_title</key>
-					<string>Subject</string>
-					<key>pfm_type</key>
-					<string>array</string>
-					<key>pfm_type_input</key>
-					<string>string</string>
 					<key>pfm_substitution_variables</key>
 					<dict>
 						<key>%AD_ComputerID%</key>
 						<dict>
 							<key>pfm_description</key>
 							<string>Active Directory computer ID.</string>
-							<key>pfm_value_placeholder</key>
-							<string></string>
 							<key>pfm_substitution_source</key>
 							<string>local</string>
+							<key>pfm_value_placeholder</key>
+							<string></string>
 						</dict>
 						<key>%AD_Domain%</key>
 						<dict>
 							<key>pfm_description</key>
 							<string>Active Directory domain.</string>
-							<key>pfm_value_placeholder</key>
-							<string></string>
 							<key>pfm_substitution_source</key>
 							<string>local</string>
+							<key>pfm_value_placeholder</key>
+							<string></string>
 						</dict>
 						<key>%AD_DomainForestName%</key>
 						<dict>
 							<key>pfm_description</key>
 							<string>Active Directory forest name.</string>
-							<key>pfm_value_placeholder</key>
-							<string></string>
 							<key>pfm_substitution_source</key>
 							<string>local</string>
+							<key>pfm_value_placeholder</key>
+							<string></string>
 						</dict>
 						<key>%AD_DomainGuid%</key>
 						<dict>
 							<key>pfm_description</key>
 							<string>Active Directory GUID.</string>
-							<key>pfm_value_placeholder</key>
-							<string>20405B46-877F-4274-ADB8-A1FCAA765998</string>
 							<key>pfm_substitution_source</key>
 							<string>local</string>
+							<key>pfm_value_placeholder</key>
+							<string>20405B46-877F-4274-ADB8-A1FCAA765998</string>
 						</dict>
 						<key>%AD_DomainNameDNS%</key>
 						<dict>
 							<key>pfm_description</key>
 							<string>Active Directory DNS Name.</string>
-							<key>pfm_value_placeholder</key>
-							<string></string>
 							<key>pfm_substitution_source</key>
 							<string>local</string>
+							<key>pfm_value_placeholder</key>
+							<string></string>
 						</dict>
 						<key>%AD_KerberosID%</key>
 						<dict>
 							<key>pfm_description</key>
 							<string>Active Directory Kerberos ID.</string>
-							<key>pfm_value_placeholder</key>
-							<string></string>
 							<key>pfm_substitution_source</key>
 							<string>local</string>
+							<key>pfm_value_placeholder</key>
+							<string></string>
 						</dict>
 						<key>%ComputerName%</key>
 						<dict>
 							<key>pfm_description</key>
-							<string>The computer's name, as set in System Preferences > Sharing.</string>
-							<key>pfm_value_placeholder</key>
-							<string>ProfileCreator's MacBook Pro</string>
+							<string>The computer's name, as set in System Preferences &gt; Sharing.</string>
 							<key>pfm_substitution_source</key>
 							<string>local</string>
+							<key>pfm_value_placeholder</key>
+							<string>ProfileCreator's MacBook Pro</string>
 						</dict>
 						<key>%HardwareUUID%</key>
 						<dict>
 							<key>pfm_description</key>
 							<string>The computer's unique identifier.</string>
-							<key>pfm_value_placeholder</key>
-							<string>7CD8DFF1-70B5-403D-81C2-A41A5F29CFF9</string>
 							<key>pfm_substitution_source</key>
 							<string>local</string>
+							<key>pfm_value_placeholder</key>
+							<string>7CD8DFF1-70B5-403D-81C2-A41A5F29CFF9</string>
 						</dict>
 						<key>%HostName%</key>
 						<dict>
 							<key>pfm_description</key>
 							<string>The computer's DNS name, such as mac1.example.com.</string>
-							<key>pfm_value_placeholder</key>
-							<string>ProfileCreators-MBP.domain.com</string>
 							<key>pfm_substitution_source</key>
 							<string>local</string>
+							<key>pfm_value_placeholder</key>
+							<string>ProfileCreators-MBP.domain.com</string>
 						</dict>
 						<key>%LocalHostName%</key>
 						<dict>
 							<key>pfm_description</key>
 							<string>The computer's local network name, such as Mac1.local.</string>
-							<key>pfm_value_placeholder</key>
-							<string>ProfileCreators-MacBook-Pro</string>
 							<key>pfm_substitution_source</key>
 							<string>local</string>
+							<key>pfm_value_placeholder</key>
+							<string>ProfileCreators-MacBook-Pro</string>
 						</dict>
 						<key>%MACAddress%</key>
 						<dict>
 							<key>pfm_description</key>
 							<string>The computer's Ethernet (en0) MAC address.</string>
-							<key>pfm_value_placeholder</key>
-							<string>a1:b2:c3:d4:e5:f6</string>
 							<key>pfm_substitution_source</key>
 							<string>local</string>
+							<key>pfm_value_placeholder</key>
+							<string>a1:b2:c3:d4:e5:f6</string>
 						</dict>
 						<key>%SerialNumber%</key>
 						<dict>
 							<key>pfm_description</key>
 							<string>The computer's serial number.</string>
-							<key>pfm_value_placeholder</key>
-							<string>C02LZ9Q1CC55</string>
 							<key>pfm_substitution_source</key>
 							<string>local</string>
+							<key>pfm_value_placeholder</key>
+							<string>C02LZ9Q1CC55</string>
 						</dict>
 					</dict>
+					<key>pfm_title</key>
+					<string>Subject</string>
+					<key>pfm_type</key>
+					<string>array</string>
+					<key>pfm_type_input</key>
+					<string>string</string>
 					<key>pfm_value_placeholder</key>
 					<string>O=ProfileCreator,CN=ProfileCreator Identity &lt;UUID&gt;</string>
 					<key>pfm_value_processor</key>
@@ -329,7 +341,7 @@
 				</dict>
 				<dict>
 					<key>pfm_description</key>
-					<string>Used as the pre-shared secret for automatic enrollment.</string>
+					<string>A preshared secret.</string>
 					<key>pfm_name</key>
 					<string>Challenge</string>
 					<key>pfm_title</key>
@@ -341,13 +353,14 @@
 					<key>pfm_default</key>
 					<integer>1024</integer>
 					<key>pfm_description</key>
-					<string>Key size in bits</string>
+					<string>The key size, in bits.</string>
 					<key>pfm_name</key>
 					<string>Keysize</string>
 					<key>pfm_range_list</key>
 					<array>
 						<integer>1024</integer>
 						<integer>2048</integer>
+						<integer>4096</integer>
 					</array>
 					<key>pfm_title</key>
 					<string>Key Size</string>
@@ -356,7 +369,7 @@
 				</dict>
 				<dict>
 					<key>pfm_description</key>
-					<string>The fingerprint (hex string) of the Certificate Authority certificate.</string>
+					<string>The fingerprint of the Certificate Authority certificate.</string>
 					<key>pfm_name</key>
 					<string>CAFingerprint</string>
 					<key>pfm_title</key>
@@ -372,7 +385,7 @@
 					<key>pfm_default</key>
 					<string>RSA</string>
 					<key>pfm_description</key>
-					<string>Currently always "RSA".</string>
+					<string>Always 'RSA'.</string>
 					<key>pfm_name</key>
 					<string>Key Type</string>
 					<key>pfm_range_list</key>
@@ -388,9 +401,16 @@
 					<key>pfm_default</key>
 					<integer>0</integer>
 					<key>pfm_description</key>
-					<string>A bitmask indicating the use of the key.\n• 1 - signing\n• 4 - encryption\n• 5 - signing and encryption</string>
+					<string>A bitmask indicating the use of the key. Possible values:
+
+* 1: Signing
+* 4: Encryption
+
+Some certificate authorities, such as Windows CA, support only encryption or signing, but not both at the same time.</string>
 					<key>pfm_ios_min</key>
 					<string>4.0</string>
+					<key>pfm_macos_min</key>
+					<string>10.11</string>
 					<key>pfm_name</key>
 					<string>Key Usage</string>
 					<key>pfm_range_list</key>
@@ -411,513 +431,527 @@
 					<string>Key Usage</string>
 					<key>pfm_type</key>
 					<string>integer</string>
+					<key>pfmx_supported_oses</key>
+					<dict>
+						<key>macOS</key>
+						<dict>
+							<key>pfmx_introduced</key>
+							<string>10.11</string>
+						</dict>
+					</dict>
 				</dict>
 				<dict>
 					<key>pfm_default</key>
 					<true/>
 					<key>pfm_description</key>
-					<string>Allow / restrict exporting the private key from the keychain.</string>
-					<key>pfm_description_reference</key>
-					<string>If `false`, disables exporting the private key from the keychain.</string>
+					<string>If 'false', the system disables exporting the private key from the keychain.</string>
 					<key>pfm_macos_min</key>
-					<string>10.15</string>
+					<string>10.13.4</string>
 					<key>pfm_name</key>
 					<string>KeyIsExtractable</string>
 					<key>pfm_title</key>
 					<string>Key is Extractable</string>
 					<key>pfm_type</key>
 					<string>boolean</string>
+					<key>pfmx_supported_oses</key>
+					<dict>
+						<key>macOS</key>
+						<dict>
+							<key>pfmx_introduced</key>
+							<string>10.13.4</string>
+						</dict>
+					</dict>
 				</dict>
 				<dict>
 					<key>pfm_description</key>
-					<string>Specifies the Subject Alt Name for the certificate.</string>
+					<string>The SCEP payload can specify an optional 'SubjectAltName' dictionary that provides values required by the CA for issuing a certificate. You can specify a single string or an array of strings for each key. The values you specify depend on the CA you're using, but might include DNS name, URL, or email values. For an example, see Sample Configuration Profile or Over-the-Air Profile Delivery and Configuration.</string>
 					<key>pfm_name</key>
 					<string>SubjectAltName</string>
 					<key>pfm_subkeys</key>
 					<array>
 						<dict>
 							<key>pfm_description</key>
-							<string>RFC 822 (email address) string</string>
+							<string>The RFC 822 (email address) string.</string>
 							<key>pfm_name</key>
 							<string>rfc822Name</string>
+							<key>pfm_substitution_variables</key>
+							<dict>
+								<key>%AD_ComputerID%</key>
+								<dict>
+									<key>pfm_description</key>
+									<string>Active Directory computer ID.</string>
+									<key>pfm_substitution_source</key>
+									<string>local</string>
+									<key>pfm_value_placeholder</key>
+									<string></string>
+								</dict>
+								<key>%AD_Domain%</key>
+								<dict>
+									<key>pfm_description</key>
+									<string>Active Directory domain.</string>
+									<key>pfm_substitution_source</key>
+									<string>local</string>
+									<key>pfm_value_placeholder</key>
+									<string></string>
+								</dict>
+								<key>%AD_DomainForestName%</key>
+								<dict>
+									<key>pfm_description</key>
+									<string>Active Directory forest name.</string>
+									<key>pfm_substitution_source</key>
+									<string>local</string>
+									<key>pfm_value_placeholder</key>
+									<string></string>
+								</dict>
+								<key>%AD_DomainGuid%</key>
+								<dict>
+									<key>pfm_description</key>
+									<string>Active Directory GUID.</string>
+									<key>pfm_substitution_source</key>
+									<string>local</string>
+									<key>pfm_value_placeholder</key>
+									<string>20405B46-877F-4274-ADB8-A1FCAA765998</string>
+								</dict>
+								<key>%AD_DomainNameDNS%</key>
+								<dict>
+									<key>pfm_description</key>
+									<string>Active Directory DNS Name.</string>
+									<key>pfm_substitution_source</key>
+									<string>local</string>
+									<key>pfm_value_placeholder</key>
+									<string></string>
+								</dict>
+								<key>%AD_KerberosID%</key>
+								<dict>
+									<key>pfm_description</key>
+									<string>Active Directory Kerberos ID.</string>
+									<key>pfm_substitution_source</key>
+									<string>local</string>
+									<key>pfm_value_placeholder</key>
+									<string></string>
+								</dict>
+								<key>%ComputerName%</key>
+								<dict>
+									<key>pfm_description</key>
+									<string>The computer's name, as set in System Preferences &gt; Sharing.</string>
+									<key>pfm_substitution_source</key>
+									<string>local</string>
+									<key>pfm_value_placeholder</key>
+									<string>ProfileCreator's MacBook Pro</string>
+								</dict>
+								<key>%HardwareUUID%</key>
+								<dict>
+									<key>pfm_description</key>
+									<string>The computer's unique identifier.</string>
+									<key>pfm_substitution_source</key>
+									<string>local</string>
+									<key>pfm_value_placeholder</key>
+									<string>7CD8DFF1-70B5-403D-81C2-A41A5F29CFF9</string>
+								</dict>
+								<key>%HostName%</key>
+								<dict>
+									<key>pfm_description</key>
+									<string>The computer's DNS name, such as mac1.example.com.</string>
+									<key>pfm_substitution_source</key>
+									<string>local</string>
+									<key>pfm_value_placeholder</key>
+									<string>ProfileCreators-MBP.domain.com</string>
+								</dict>
+								<key>%LocalHostName%</key>
+								<dict>
+									<key>pfm_description</key>
+									<string>The computer's local network name, such as Mac1.local.</string>
+									<key>pfm_substitution_source</key>
+									<string>local</string>
+									<key>pfm_value_placeholder</key>
+									<string>ProfileCreators-MacBook-Pro</string>
+								</dict>
+								<key>%MACAddress%</key>
+								<dict>
+									<key>pfm_description</key>
+									<string>The computer's Ethernet (en0) MAC address.</string>
+									<key>pfm_substitution_source</key>
+									<string>local</string>
+									<key>pfm_value_placeholder</key>
+									<string>a1:b2:c3:d4:e5:f6</string>
+								</dict>
+								<key>%SerialNumber%</key>
+								<dict>
+									<key>pfm_description</key>
+									<string>The computer's serial number.</string>
+									<key>pfm_substitution_source</key>
+									<string>local</string>
+									<key>pfm_value_placeholder</key>
+									<string>C02LZ9Q1CC55</string>
+								</dict>
+							</dict>
 							<key>pfm_title</key>
 							<string>RFC 822 Name</string>
 							<key>pfm_type</key>
 							<string>string</string>
+						</dict>
+						<dict>
+							<key>pfm_description</key>
+							<string>The DNS name.</string>
+							<key>pfm_name</key>
+							<string>dNSName</string>
 							<key>pfm_substitution_variables</key>
 							<dict>
 								<key>%AD_ComputerID%</key>
 								<dict>
 									<key>pfm_description</key>
 									<string>Active Directory computer ID.</string>
-									<key>pfm_value_placeholder</key>
-									<string></string>
 									<key>pfm_substitution_source</key>
 									<string>local</string>
+									<key>pfm_value_placeholder</key>
+									<string></string>
 								</dict>
 								<key>%AD_Domain%</key>
 								<dict>
 									<key>pfm_description</key>
 									<string>Active Directory domain.</string>
-									<key>pfm_value_placeholder</key>
-									<string></string>
 									<key>pfm_substitution_source</key>
 									<string>local</string>
+									<key>pfm_value_placeholder</key>
+									<string></string>
 								</dict>
 								<key>%AD_DomainForestName%</key>
 								<dict>
 									<key>pfm_description</key>
 									<string>Active Directory forest name.</string>
-									<key>pfm_value_placeholder</key>
-									<string></string>
 									<key>pfm_substitution_source</key>
 									<string>local</string>
+									<key>pfm_value_placeholder</key>
+									<string></string>
 								</dict>
 								<key>%AD_DomainGuid%</key>
 								<dict>
 									<key>pfm_description</key>
 									<string>Active Directory GUID.</string>
-									<key>pfm_value_placeholder</key>
-									<string>20405B46-877F-4274-ADB8-A1FCAA765998</string>
 									<key>pfm_substitution_source</key>
 									<string>local</string>
+									<key>pfm_value_placeholder</key>
+									<string>20405B46-877F-4274-ADB8-A1FCAA765998</string>
 								</dict>
 								<key>%AD_DomainNameDNS%</key>
 								<dict>
 									<key>pfm_description</key>
 									<string>Active Directory DNS Name.</string>
-									<key>pfm_value_placeholder</key>
-									<string></string>
 									<key>pfm_substitution_source</key>
 									<string>local</string>
+									<key>pfm_value_placeholder</key>
+									<string></string>
 								</dict>
 								<key>%AD_KerberosID%</key>
 								<dict>
 									<key>pfm_description</key>
 									<string>Active Directory Kerberos ID.</string>
-									<key>pfm_value_placeholder</key>
-									<string></string>
 									<key>pfm_substitution_source</key>
 									<string>local</string>
+									<key>pfm_value_placeholder</key>
+									<string></string>
 								</dict>
 								<key>%ComputerName%</key>
 								<dict>
 									<key>pfm_description</key>
-									<string>The computer's name, as set in System Preferences > Sharing.</string>
-									<key>pfm_value_placeholder</key>
-									<string>ProfileCreator's MacBook Pro</string>
+									<string>The computer's name, as set in System Preferences &gt; Sharing.</string>
 									<key>pfm_substitution_source</key>
 									<string>local</string>
+									<key>pfm_value_placeholder</key>
+									<string>ProfileCreator's MacBook Pro</string>
 								</dict>
 								<key>%HardwareUUID%</key>
 								<dict>
 									<key>pfm_description</key>
 									<string>The computer's unique identifier.</string>
-									<key>pfm_value_placeholder</key>
-									<string>7CD8DFF1-70B5-403D-81C2-A41A5F29CFF9</string>
 									<key>pfm_substitution_source</key>
 									<string>local</string>
+									<key>pfm_value_placeholder</key>
+									<string>7CD8DFF1-70B5-403D-81C2-A41A5F29CFF9</string>
 								</dict>
 								<key>%HostName%</key>
 								<dict>
 									<key>pfm_description</key>
 									<string>The computer's DNS name, such as mac1.example.com.</string>
-									<key>pfm_value_placeholder</key>
-									<string>ProfileCreators-MBP.domain.com</string>
 									<key>pfm_substitution_source</key>
 									<string>local</string>
+									<key>pfm_value_placeholder</key>
+									<string>ProfileCreators-MBP.domain.com</string>
 								</dict>
 								<key>%LocalHostName%</key>
 								<dict>
 									<key>pfm_description</key>
 									<string>The computer's local network name, such as Mac1.local.</string>
-									<key>pfm_value_placeholder</key>
-									<string>ProfileCreators-MacBook-Pro</string>
 									<key>pfm_substitution_source</key>
 									<string>local</string>
+									<key>pfm_value_placeholder</key>
+									<string>ProfileCreators-MacBook-Pro</string>
 								</dict>
 								<key>%MACAddress%</key>
 								<dict>
 									<key>pfm_description</key>
 									<string>The computer's Ethernet (en0) MAC address.</string>
-									<key>pfm_value_placeholder</key>
-									<string>a1:b2:c3:d4:e5:f6</string>
 									<key>pfm_substitution_source</key>
 									<string>local</string>
+									<key>pfm_value_placeholder</key>
+									<string>a1:b2:c3:d4:e5:f6</string>
 								</dict>
 								<key>%SerialNumber%</key>
 								<dict>
 									<key>pfm_description</key>
 									<string>The computer's serial number.</string>
-									<key>pfm_value_placeholder</key>
-									<string>C02LZ9Q1CC55</string>
 									<key>pfm_substitution_source</key>
 									<string>local</string>
+									<key>pfm_value_placeholder</key>
+									<string>C02LZ9Q1CC55</string>
 								</dict>
 							</dict>
-						</dict>
-						<dict>
-							<key>pfm_description</key>
-							<string>DNS Name</string>
-							<key>pfm_name</key>
-							<string>dNSName</string>
 							<key>pfm_title</key>
 							<string>DNS Name</string>
 							<key>pfm_type</key>
 							<string>string</string>
+						</dict>
+						<dict>
+							<key>pfm_description</key>
+							<string>The Uniform Resource Identifier.</string>
+							<key>pfm_name</key>
+							<string>uniformResourceIdentifier</string>
 							<key>pfm_substitution_variables</key>
 							<dict>
 								<key>%AD_ComputerID%</key>
 								<dict>
 									<key>pfm_description</key>
 									<string>Active Directory computer ID.</string>
-									<key>pfm_value_placeholder</key>
-									<string></string>
 									<key>pfm_substitution_source</key>
 									<string>local</string>
+									<key>pfm_value_placeholder</key>
+									<string></string>
 								</dict>
 								<key>%AD_Domain%</key>
 								<dict>
 									<key>pfm_description</key>
 									<string>Active Directory domain.</string>
-									<key>pfm_value_placeholder</key>
-									<string></string>
 									<key>pfm_substitution_source</key>
 									<string>local</string>
+									<key>pfm_value_placeholder</key>
+									<string></string>
 								</dict>
 								<key>%AD_DomainForestName%</key>
 								<dict>
 									<key>pfm_description</key>
 									<string>Active Directory forest name.</string>
-									<key>pfm_value_placeholder</key>
-									<string></string>
 									<key>pfm_substitution_source</key>
 									<string>local</string>
+									<key>pfm_value_placeholder</key>
+									<string></string>
 								</dict>
 								<key>%AD_DomainGuid%</key>
 								<dict>
 									<key>pfm_description</key>
 									<string>Active Directory GUID.</string>
-									<key>pfm_value_placeholder</key>
-									<string>20405B46-877F-4274-ADB8-A1FCAA765998</string>
 									<key>pfm_substitution_source</key>
 									<string>local</string>
+									<key>pfm_value_placeholder</key>
+									<string>20405B46-877F-4274-ADB8-A1FCAA765998</string>
 								</dict>
 								<key>%AD_DomainNameDNS%</key>
 								<dict>
 									<key>pfm_description</key>
 									<string>Active Directory DNS Name.</string>
-									<key>pfm_value_placeholder</key>
-									<string></string>
 									<key>pfm_substitution_source</key>
 									<string>local</string>
+									<key>pfm_value_placeholder</key>
+									<string></string>
 								</dict>
 								<key>%AD_KerberosID%</key>
 								<dict>
 									<key>pfm_description</key>
 									<string>Active Directory Kerberos ID.</string>
-									<key>pfm_value_placeholder</key>
-									<string></string>
 									<key>pfm_substitution_source</key>
 									<string>local</string>
+									<key>pfm_value_placeholder</key>
+									<string></string>
 								</dict>
 								<key>%ComputerName%</key>
 								<dict>
 									<key>pfm_description</key>
-									<string>The computer's name, as set in System Preferences > Sharing.</string>
-									<key>pfm_value_placeholder</key>
-									<string>ProfileCreator's MacBook Pro</string>
+									<string>The computer's name, as set in System Preferences &gt; Sharing.</string>
 									<key>pfm_substitution_source</key>
 									<string>local</string>
+									<key>pfm_value_placeholder</key>
+									<string>ProfileCreator's MacBook Pro</string>
 								</dict>
 								<key>%HardwareUUID%</key>
 								<dict>
 									<key>pfm_description</key>
 									<string>The computer's unique identifier.</string>
-									<key>pfm_value_placeholder</key>
-									<string>7CD8DFF1-70B5-403D-81C2-A41A5F29CFF9</string>
 									<key>pfm_substitution_source</key>
 									<string>local</string>
+									<key>pfm_value_placeholder</key>
+									<string>7CD8DFF1-70B5-403D-81C2-A41A5F29CFF9</string>
 								</dict>
 								<key>%HostName%</key>
 								<dict>
 									<key>pfm_description</key>
 									<string>The computer's DNS name, such as mac1.example.com.</string>
-									<key>pfm_value_placeholder</key>
-									<string>ProfileCreators-MBP.domain.com</string>
 									<key>pfm_substitution_source</key>
 									<string>local</string>
+									<key>pfm_value_placeholder</key>
+									<string>ProfileCreators-MBP.domain.com</string>
 								</dict>
 								<key>%LocalHostName%</key>
 								<dict>
 									<key>pfm_description</key>
 									<string>The computer's local network name, such as Mac1.local.</string>
-									<key>pfm_value_placeholder</key>
-									<string>ProfileCreators-MacBook-Pro</string>
 									<key>pfm_substitution_source</key>
 									<string>local</string>
+									<key>pfm_value_placeholder</key>
+									<string>ProfileCreators-MacBook-Pro</string>
 								</dict>
 								<key>%MACAddress%</key>
 								<dict>
 									<key>pfm_description</key>
 									<string>The computer's Ethernet (en0) MAC address.</string>
-									<key>pfm_value_placeholder</key>
-									<string>a1:b2:c3:d4:e5:f6</string>
 									<key>pfm_substitution_source</key>
 									<string>local</string>
+									<key>pfm_value_placeholder</key>
+									<string>a1:b2:c3:d4:e5:f6</string>
 								</dict>
 								<key>%SerialNumber%</key>
 								<dict>
 									<key>pfm_description</key>
 									<string>The computer's serial number.</string>
-									<key>pfm_value_placeholder</key>
-									<string>C02LZ9Q1CC55</string>
 									<key>pfm_substitution_source</key>
 									<string>local</string>
+									<key>pfm_value_placeholder</key>
+									<string>C02LZ9Q1CC55</string>
 								</dict>
 							</dict>
-						</dict>
-						<dict>
-							<key>pfm_description</key>
-							<string>Uniform Resource Indentifier</string>
-							<key>pfm_name</key>
-							<string>uniformResourceIdentifier</string>
 							<key>pfm_title</key>
 							<string>URI</string>
 							<key>pfm_type</key>
 							<string>string</string>
+						</dict>
+						<dict>
+							<key>pfm_description</key>
+							<string>The NT principal name.</string>
+							<key>pfm_name</key>
+							<string>ntPrincipalName</string>
 							<key>pfm_substitution_variables</key>
 							<dict>
 								<key>%AD_ComputerID%</key>
 								<dict>
 									<key>pfm_description</key>
 									<string>Active Directory computer ID.</string>
-									<key>pfm_value_placeholder</key>
-									<string></string>
 									<key>pfm_substitution_source</key>
 									<string>local</string>
+									<key>pfm_value_placeholder</key>
+									<string></string>
 								</dict>
 								<key>%AD_Domain%</key>
 								<dict>
 									<key>pfm_description</key>
 									<string>Active Directory domain.</string>
-									<key>pfm_value_placeholder</key>
-									<string></string>
 									<key>pfm_substitution_source</key>
 									<string>local</string>
+									<key>pfm_value_placeholder</key>
+									<string></string>
 								</dict>
 								<key>%AD_DomainForestName%</key>
 								<dict>
 									<key>pfm_description</key>
 									<string>Active Directory forest name.</string>
-									<key>pfm_value_placeholder</key>
-									<string></string>
 									<key>pfm_substitution_source</key>
 									<string>local</string>
+									<key>pfm_value_placeholder</key>
+									<string></string>
 								</dict>
 								<key>%AD_DomainGuid%</key>
 								<dict>
 									<key>pfm_description</key>
 									<string>Active Directory GUID.</string>
-									<key>pfm_value_placeholder</key>
-									<string>20405B46-877F-4274-ADB8-A1FCAA765998</string>
 									<key>pfm_substitution_source</key>
 									<string>local</string>
+									<key>pfm_value_placeholder</key>
+									<string>20405B46-877F-4274-ADB8-A1FCAA765998</string>
 								</dict>
 								<key>%AD_DomainNameDNS%</key>
 								<dict>
 									<key>pfm_description</key>
 									<string>Active Directory DNS Name.</string>
-									<key>pfm_value_placeholder</key>
-									<string></string>
 									<key>pfm_substitution_source</key>
 									<string>local</string>
+									<key>pfm_value_placeholder</key>
+									<string></string>
 								</dict>
 								<key>%AD_KerberosID%</key>
 								<dict>
 									<key>pfm_description</key>
 									<string>Active Directory Kerberos ID.</string>
-									<key>pfm_value_placeholder</key>
-									<string></string>
 									<key>pfm_substitution_source</key>
 									<string>local</string>
+									<key>pfm_value_placeholder</key>
+									<string></string>
 								</dict>
 								<key>%ComputerName%</key>
 								<dict>
 									<key>pfm_description</key>
-									<string>The computer's name, as set in System Preferences > Sharing.</string>
-									<key>pfm_value_placeholder</key>
-									<string>ProfileCreator's MacBook Pro</string>
+									<string>The computer's name, as set in System Preferences &gt; Sharing.</string>
 									<key>pfm_substitution_source</key>
 									<string>local</string>
+									<key>pfm_value_placeholder</key>
+									<string>ProfileCreator's MacBook Pro</string>
 								</dict>
 								<key>%HardwareUUID%</key>
 								<dict>
 									<key>pfm_description</key>
 									<string>The computer's unique identifier.</string>
-									<key>pfm_value_placeholder</key>
-									<string>7CD8DFF1-70B5-403D-81C2-A41A5F29CFF9</string>
 									<key>pfm_substitution_source</key>
 									<string>local</string>
+									<key>pfm_value_placeholder</key>
+									<string>7CD8DFF1-70B5-403D-81C2-A41A5F29CFF9</string>
 								</dict>
 								<key>%HostName%</key>
 								<dict>
 									<key>pfm_description</key>
 									<string>The computer's DNS name, such as mac1.example.com.</string>
-									<key>pfm_value_placeholder</key>
-									<string>ProfileCreators-MBP.domain.com</string>
 									<key>pfm_substitution_source</key>
 									<string>local</string>
+									<key>pfm_value_placeholder</key>
+									<string>ProfileCreators-MBP.domain.com</string>
 								</dict>
 								<key>%LocalHostName%</key>
 								<dict>
 									<key>pfm_description</key>
 									<string>The computer's local network name, such as Mac1.local.</string>
-									<key>pfm_value_placeholder</key>
-									<string>ProfileCreators-MacBook-Pro</string>
 									<key>pfm_substitution_source</key>
 									<string>local</string>
+									<key>pfm_value_placeholder</key>
+									<string>ProfileCreators-MacBook-Pro</string>
 								</dict>
 								<key>%MACAddress%</key>
 								<dict>
 									<key>pfm_description</key>
 									<string>The computer's Ethernet (en0) MAC address.</string>
-									<key>pfm_value_placeholder</key>
-									<string>a1:b2:c3:d4:e5:f6</string>
 									<key>pfm_substitution_source</key>
 									<string>local</string>
+									<key>pfm_value_placeholder</key>
+									<string>a1:b2:c3:d4:e5:f6</string>
 								</dict>
 								<key>%SerialNumber%</key>
 								<dict>
 									<key>pfm_description</key>
 									<string>The computer's serial number.</string>
-									<key>pfm_value_placeholder</key>
-									<string>C02LZ9Q1CC55</string>
 									<key>pfm_substitution_source</key>
 									<string>local</string>
+									<key>pfm_value_placeholder</key>
+									<string>C02LZ9Q1CC55</string>
 								</dict>
 							</dict>
-						</dict>
-						<dict>
-							<key>pfm_description</key>
-							<string>NT Principal Name</string>
-							<key>pfm_name</key>
-							<string>ntPrincipalName</string>
 							<key>pfm_title</key>
 							<string>NT Principal Name</string>
 							<key>pfm_type</key>
 							<string>string</string>
-							<key>pfm_substitution_variables</key>
-							<dict>
-								<key>%AD_ComputerID%</key>
-								<dict>
-									<key>pfm_description</key>
-									<string>Active Directory computer ID.</string>
-									<key>pfm_value_placeholder</key>
-									<string></string>
-									<key>pfm_substitution_source</key>
-									<string>local</string>
-								</dict>
-								<key>%AD_Domain%</key>
-								<dict>
-									<key>pfm_description</key>
-									<string>Active Directory domain.</string>
-									<key>pfm_value_placeholder</key>
-									<string></string>
-									<key>pfm_substitution_source</key>
-									<string>local</string>
-								</dict>
-								<key>%AD_DomainForestName%</key>
-								<dict>
-									<key>pfm_description</key>
-									<string>Active Directory forest name.</string>
-									<key>pfm_value_placeholder</key>
-									<string></string>
-									<key>pfm_substitution_source</key>
-									<string>local</string>
-								</dict>
-								<key>%AD_DomainGuid%</key>
-								<dict>
-									<key>pfm_description</key>
-									<string>Active Directory GUID.</string>
-									<key>pfm_value_placeholder</key>
-									<string>20405B46-877F-4274-ADB8-A1FCAA765998</string>
-									<key>pfm_substitution_source</key>
-									<string>local</string>
-								</dict>
-								<key>%AD_DomainNameDNS%</key>
-								<dict>
-									<key>pfm_description</key>
-									<string>Active Directory DNS Name.</string>
-									<key>pfm_value_placeholder</key>
-									<string></string>
-									<key>pfm_substitution_source</key>
-									<string>local</string>
-								</dict>
-								<key>%AD_KerberosID%</key>
-								<dict>
-									<key>pfm_description</key>
-									<string>Active Directory Kerberos ID.</string>
-									<key>pfm_value_placeholder</key>
-									<string></string>
-									<key>pfm_substitution_source</key>
-									<string>local</string>
-								</dict>
-								<key>%ComputerName%</key>
-								<dict>
-									<key>pfm_description</key>
-									<string>The computer's name, as set in System Preferences > Sharing.</string>
-									<key>pfm_value_placeholder</key>
-									<string>ProfileCreator's MacBook Pro</string>
-									<key>pfm_substitution_source</key>
-									<string>local</string>
-								</dict>
-								<key>%HardwareUUID%</key>
-								<dict>
-									<key>pfm_description</key>
-									<string>The computer's unique identifier.</string>
-									<key>pfm_value_placeholder</key>
-									<string>7CD8DFF1-70B5-403D-81C2-A41A5F29CFF9</string>
-									<key>pfm_substitution_source</key>
-									<string>local</string>
-								</dict>
-								<key>%HostName%</key>
-								<dict>
-									<key>pfm_description</key>
-									<string>The computer's DNS name, such as mac1.example.com.</string>
-									<key>pfm_value_placeholder</key>
-									<string>ProfileCreators-MBP.domain.com</string>
-									<key>pfm_substitution_source</key>
-									<string>local</string>
-								</dict>
-								<key>%LocalHostName%</key>
-								<dict>
-									<key>pfm_description</key>
-									<string>The computer's local network name, such as Mac1.local.</string>
-									<key>pfm_value_placeholder</key>
-									<string>ProfileCreators-MacBook-Pro</string>
-									<key>pfm_substitution_source</key>
-									<string>local</string>
-								</dict>
-								<key>%MACAddress%</key>
-								<dict>
-									<key>pfm_description</key>
-									<string>The computer's Ethernet (en0) MAC address.</string>
-									<key>pfm_value_placeholder</key>
-									<string>a1:b2:c3:d4:e5:f6</string>
-									<key>pfm_substitution_source</key>
-									<string>local</string>
-								</dict>
-								<key>%SerialNumber%</key>
-								<dict>
-									<key>pfm_description</key>
-									<string>The computer's serial number.</string>
-									<key>pfm_value_placeholder</key>
-									<string>C02LZ9Q1CC55</string>
-									<key>pfm_substitution_source</key>
-									<string>local</string>
-								</dict>
-							</dict>
 						</dict>
 					</array>
 					<key>pfm_title</key>
@@ -930,24 +964,44 @@
 					<integer>3</integer>
 					<key>pfm_description</key>
 					<string>The number of times the device should retry if the server sends a PENDING response.</string>
+					<key>pfm_macos_min</key>
+					<string>10.10</string>
 					<key>pfm_name</key>
 					<string>Retries</string>
 					<key>pfm_title</key>
 					<string>Retries</string>
 					<key>pfm_type</key>
 					<string>integer</string>
+					<key>pfmx_supported_oses</key>
+					<dict>
+						<key>macOS</key>
+						<dict>
+							<key>pfmx_introduced</key>
+							<string>10.10</string>
+						</dict>
+					</dict>
 				</dict>
 				<dict>
 					<key>pfm_default</key>
 					<integer>10</integer>
 					<key>pfm_description</key>
 					<string>The number of seconds to wait between subsequent retries. The first retry is attempted without this delay.</string>
+					<key>pfm_macos_min</key>
+					<string>10.10</string>
 					<key>pfm_name</key>
 					<string>RetryDelay</string>
 					<key>pfm_title</key>
 					<string>Retry Delay</string>
 					<key>pfm_type</key>
 					<string>integer</string>
+					<key>pfmx_supported_oses</key>
+					<dict>
+						<key>macOS</key>
+						<dict>
+							<key>pfmx_introduced</key>
+							<string>10.10</string>
+						</dict>
+					</dict>
 				</dict>
 				<dict>
 					<key>pfm_default</key>
@@ -969,17 +1023,23 @@
 					<key>pfm_default</key>
 					<false/>
 					<key>pfm_description</key>
-					<string>Allow all apps to access the certificate in the keychain</string>
+					<string>If 'true', all apps have access to the private key.</string>
+					<key>pfm_macos_min</key>
+					<string>10.10</string>
 					<key>pfm_name</key>
 					<string>AllowAllAppsAccess</string>
-					<key>pfm_platforms</key>
-					<array>
-						<string>macOS</string>
-					</array>
 					<key>pfm_title</key>
-					<string>Allow access to all apps</string>
+					<string>Allow All Apps Access</string>
 					<key>pfm_type</key>
 					<string>boolean</string>
+					<key>pfmx_supported_oses</key>
+					<dict>
+						<key>macOS</key>
+						<dict>
+							<key>pfmx_introduced</key>
+							<string>10.10</string>
+						</dict>
+					</dict>
 				</dict>
 			</array>
 			<key>pfm_title</key>
@@ -990,14 +1050,104 @@
 	</array>
 	<key>pfm_targets</key>
 	<array>
-		<string>user</string>
 		<string>system</string>
+		<string>user</string>
 	</array>
 	<key>pfm_title</key>
 	<string>SCEP</string>
+	<key>pfm_tvos_min</key>
+	<string>9.0</string>
 	<key>pfm_unique</key>
 	<false/>
 	<key>pfm_version</key>
 	<integer>8</integer>
+	<key>pfmx_supported_oses</key>
+	<dict>
+		<key>iOS</key>
+		<dict>
+			<key>pfmx_allow_manual_install</key>
+			<true/>
+			<key>pfmx_introduced</key>
+			<string>4.0</string>
+			<key>pfmx_multiple</key>
+			<true/>
+			<key>pfmx_shared_ipad</key>
+			<dict>
+				<key>pfmx_device_channel</key>
+				<true/>
+				<key>pfmx_mode</key>
+				<string>allowed</string>
+				<key>pfmx_user_channel</key>
+				<false/>
+			</dict>
+			<key>pfmx_supervised</key>
+			<false/>
+			<key>pfmx_user_enrollment</key>
+			<dict>
+				<key>pfmx_mode</key>
+				<string>allowed</string>
+			</dict>
+		</dict>
+		<key>macOS</key>
+		<dict>
+			<key>pfmx_allow_manual_install</key>
+			<true/>
+			<key>pfmx_device_channel</key>
+			<true/>
+			<key>pfmx_introduced</key>
+			<string>10.7</string>
+			<key>pfmx_multiple</key>
+			<true/>
+			<key>pfmx_requires_dep</key>
+			<false/>
+			<key>pfmx_user_approved_mdm</key>
+			<false/>
+			<key>pfmx_user_channel</key>
+			<true/>
+			<key>pfmx_user_enrollment</key>
+			<dict>
+				<key>pfmx_mode</key>
+				<string>allowed</string>
+			</dict>
+		</dict>
+		<key>tvOS</key>
+		<dict>
+			<key>pfmx_allow_manual_install</key>
+			<true/>
+			<key>pfmx_introduced</key>
+			<string>9.0</string>
+			<key>pfmx_multiple</key>
+			<true/>
+			<key>pfmx_supervised</key>
+			<false/>
+		</dict>
+		<key>visionOS</key>
+		<dict>
+			<key>pfmx_allow_manual_install</key>
+			<true/>
+			<key>pfmx_introduced</key>
+			<string>1.0</string>
+			<key>pfmx_multiple</key>
+			<true/>
+			<key>pfmx_supervised</key>
+			<false/>
+			<key>pfmx_user_enrollment</key>
+			<dict>
+				<key>pfmx_mode</key>
+				<string>allowed</string>
+			</dict>
+		</dict>
+		<key>watchOS</key>
+		<dict>
+			<key>pfmx_allow_manual_install</key>
+			<true/>
+			<key>pfmx_introduced</key>
+			<string>3.0</string>
+			<key>pfmx_multiple</key>
+			<true/>
+			<key>pfmx_supervised</key>
+			<false/>
+		</dict>
+	</dict>
 </dict>
 </plist>

@@ -7,6 +7,8 @@
 	<key>pfm_description_reference</key>
 	<string>The Loginwindow payload is designated by specifying com.apple.loginwindow as the PayloadType value. This payload creates managed preferences on all versions of macOS for system and device profiles. Multiple Login-
 window payloads may be installed together.</string>
+	<key>pfm_documentation_url</key>
+	<string>https://developer.apple.com/documentation/devicemanagement/loginwindow</string>
 	<key>pfm_domain</key>
 	<string>com.apple.loginwindow</string>
 	<key>pfm_format_version</key>
@@ -14,7 +16,9 @@ window payloads may be installed together.</string>
 	<key>pfm_interaction</key>
 	<string>combined</string>
 	<key>pfm_last_modified</key>
-	<date>2022-05-04T10:33:12Z</date>
+	<date>2024-09-03T15:13:17Z</date>
+	<key>pfm_macos_min</key>
+	<string>10.7</string>
 	<key>pfm_platforms</key>
 	<array>
 		<string>macOS</string>
@@ -25,9 +29,7 @@ window payloads may be installed together.</string>
 			<key>pfm_default</key>
 			<string>Configures Loginwindow settings</string>
 			<key>pfm_description</key>
-			<string>Description of the payload.</string>
-			<key>pfm_description_reference</key>
-			<string>Optional. A human-readable description of this payload. This description is shown on the Detail screen.</string>
+			<string>The human-readable description of this payload. This description appears on the Detail screen.</string>
 			<key>pfm_name</key>
 			<string>PayloadDescription</string>
 			<key>pfm_title</key>
@@ -37,11 +39,9 @@ window payloads may be installed together.</string>
 		</dict>
 		<dict>
 			<key>pfm_default</key>
-			<string>Loginwindow</string>
+			<string>Login Window</string>
 			<key>pfm_description</key>
-			<string>Name of the payload.</string>
-			<key>pfm_description_reference</key>
-			<string>A human-readable name for the profile payload. This name is displayed on the Detail screen. It does not have to be unique.</string>
+			<string>The human-readable name for the profile payload. The name appears on the Detail screen and doesn't need to be unique.</string>
 			<key>pfm_name</key>
 			<string>PayloadDisplayName</string>
 			<key>pfm_require</key>
@@ -55,9 +55,8 @@ window payloads may be installed together.</string>
 			<key>pfm_default</key>
 			<string>com.apple.loginwindow</string>
 			<key>pfm_description</key>
-			<string>A unique identifier for the payload, dot-delimited.  Usually root PayloadIdentifier+subidentifier.</string>
-			<key>pfm_description_reference</key>
-			<string>A reverse-DNS-style identifier for the specific payload. It is usually the same identifier as the root-level PayloadIdentifier value with an additional component appended.</string>
+			<string>The reverse-DNS-style identifier for the payload. This identifier is usually the same as the TopLevel value, with an additional appended component. This string must be unique within the profile.
+During a profile replacement, the system updates payloads with the same 'PayloadIdentifier' and 'PayloadUUID' in the old and new profiles.</string>
 			<key>pfm_name</key>
 			<string>PayloadIdentifier</string>
 			<key>pfm_require</key>
@@ -71,9 +70,7 @@ window payloads may be installed together.</string>
 			<key>pfm_default</key>
 			<string>com.apple.loginwindow</string>
 			<key>pfm_description</key>
-			<string>The type of the payload, a reverse dns string.</string>
-			<key>pfm_description_reference</key>
-			<string>The payload type.</string>
+			<string>The payload type, which each payload domain's reference page specifies.</string>
 			<key>pfm_name</key>
 			<string>PayloadType</string>
 			<key>pfm_require</key>
@@ -87,9 +84,8 @@ window payloads may be installed together.</string>
 			<key>pfm_default</key>
 			<string></string>
 			<key>pfm_description</key>
-			<string>Unique identifier for the payload (format 01234567-89AB-CDEF-0123-456789ABCDEF).</string>
-			<key>pfm_description_reference</key>
-			<string>A globally unique identifier for the payload. The actual content is unimportant, but it must be globally unique. In macOS, you can use uuidgen to generate reasonable UUIDs.</string>
+			<string>The globally unique identifier for the payload. The actual content is unimportant, but must be globally unique. In macOS, use 'uuidgen' to generate UUIDs.
+During a profile replacement, the system updates payloads with the same 'PayloadIdentifier' and 'PayloadUUID' in the old and new profiles.</string>
 			<key>pfm_format</key>
 			<string>^[0-9A-Za-z]{8}-[0-9A-Za-z]{4}-[0-9A-Za-z]{4}-[0-9A-Za-z]{4}-[0-9A-Za-z]{12}$</string>
 			<key>pfm_name</key>
@@ -105,12 +101,13 @@ window payloads may be installed together.</string>
 			<key>pfm_default</key>
 			<integer>1</integer>
 			<key>pfm_description</key>
-			<string>The version of the whole configuration profile.</string>
-			<key>pfm_description_reference</key>
-			<string>The version number of the individual payload.
-A profile can consist of payloads with different version numbers. For example, changes to the VPN software in iOS might introduce a new payload version to support additional features, but Mail payload versions would not necessarily change in the same release.</string>
+			<string>The version of this specific payload.</string>
 			<key>pfm_name</key>
 			<string>PayloadVersion</string>
+			<key>pfm_range_list</key>
+			<array>
+				<integer>1</integer>
+			</array>
 			<key>pfm_require</key>
 			<string>always</string>
 			<key>pfm_title</key>
@@ -120,10 +117,7 @@ A profile can consist of payloads with different version numbers. For example, c
 		</dict>
 		<dict>
 			<key>pfm_description</key>
-			<string>This value describes the issuing organization of the profile, as displayed to the user.</string>
-			<key>pfm_description_reference</key>
-			<string>Optional. A human-readable string containing the name of the organization that provided the profile.
-The payload organization for a payload need not match the payload organization in the enclosing profile.</string>
+			<string>The human-readable string containing the name of the organization that provides the profile. This value doesn't need to match the organization payload value in the enclosing dictionary.</string>
 			<key>pfm_name</key>
 			<string>PayloadOrganization</string>
 			<key>pfm_title</key>
@@ -134,8 +128,6 @@ The payload organization for a payload need not match the payload organization i
 		<dict>
 			<key>pfm_name</key>
 			<string>PFC_SegmentedControl_0</string>
-			<key>pfm_require</key>
-			<string>always</string>
 			<key>pfm_range_list_titles</key>
 			<array>
 				<string>Window</string>
@@ -143,6 +135,8 @@ The payload organization for a payload need not match the payload organization i
 				<string>Access</string>
 				<string>Password</string>
 			</array>
+			<key>pfm_require</key>
+			<string>always</string>
 			<key>pfm_segments</key>
 			<dict>
 				<key>Access</key>
@@ -158,10 +152,13 @@ The payload organization for a payload need not match the payload organization i
 				<key>Options</key>
 				<array>
 					<string>com.apple.login.mcx.DisableAutoLoginClient</string>
+					<string>AutologinUsername</string>
+					<string>AutologinPassword</string>
 					<string>DisableFDEAutoLogin</string>
 					<string>DisableConsoleAccess</string>
 					<string>EnableExternalAccounts</string>
 					<string>AdminMayDisableMCX</string>
+					<string>TALLogoutSavesState</string>
 					<string>UseComputerNameForComputerRecordName</string>
 				</array>
 				<key>Password</key>
@@ -198,6 +195,10 @@ The payload organization for a payload need not match the payload organization i
 		<dict>
 			<key>pfm_default</key>
 			<string>HostName</string>
+			<key>pfm_description</key>
+			<string>The admin host info. If present in the payload, the system displays its value in the login window as additional computer information. Before macOS 10.10, this string could only contain host name, system version, or IP address. After macOS 10.10, setting this key to any value allows the user to click the time area of the menu bar to toggle through various computer information values.</string>
+			<key>pfm_name</key>
+			<string>AdminHostInfo</string>
 			<key>pfm_range_list</key>
 			<array>
 				<string>HostName</string>
@@ -206,12 +207,6 @@ The payload organization for a payload need not match the payload organization i
 			</array>
 			<key>pfm_range_list_allow_custom_value</key>
 			<true/>
-			<key>pfm_description</key>
-			<string>Cycle through the hostname, macOS version, and IP address when the menu bar is clicked.</string>
-			<key>pfm_description_reference</key>
-			<string>Optional. If this key is included in the payload, its value will be displayed as additional computer information on the login window. Before macOS 10.10, this string could contain only particular information (HostName, SystemVersion, or IPAddress). After macOS 10.10, setting this key to any value will allow the user to click the "time" area of the menu bar to toggle through various computer information values.</string>
-			<key>pfm_name</key>
-			<string>AdminHostInfo</string>
 			<key>pfm_title</key>
 			<string>Show additional information in the menu bar</string>
 			<key>pfm_type</key>
@@ -219,9 +214,7 @@ The payload organization for a payload need not match the payload organization i
 		</dict>
 		<dict>
 			<key>pfm_description</key>
-			<string>Enter a message that's displayed above the login prompt. You might use this to provide a warning about unauthorized use.</string>
-			<key>pfm_description_reference</key>
-			<string>Optional. Text to display in the login window.</string>
+			<string>The text to display in the login window.</string>
 			<key>pfm_name</key>
 			<string>LoginwindowText</string>
 			<key>pfm_title</key>
@@ -233,9 +226,7 @@ The payload organization for a payload need not match the payload organization i
 			<key>pfm_default</key>
 			<false/>
 			<key>pfm_description</key>
-			<string>The display style and related options of the login prompt.</string>
-			<key>pfm_description_reference</key>
-			<string>Optional. Set to true to show the name and password dialog. Set to false to display a list of users.</string>
+			<string>If 'true', the system shows the name and password dialog. If 'false', the system displays a list of users.</string>
 			<key>pfm_name</key>
 			<string>SHOWFULLNAME</string>
 			<key>pfm_range_list_titles</key>
@@ -252,9 +243,7 @@ The payload organization for a payload need not match the payload organization i
 			<key>pfm_default</key>
 			<false/>
 			<key>pfm_description</key>
-			<string></string>
-			<key>pfm_description_reference</key>
-			<string>Optional. When showing a user list, set to true to show only network and system users.</string>
+			<string>If 'true', the system shows only network and system users when showing a user list.</string>
 			<key>pfm_exclude</key>
 			<array>
 				<dict>
@@ -282,9 +271,7 @@ The payload organization for a payload need not match the payload organization i
 			<key>pfm_default</key>
 			<false/>
 			<key>pfm_description</key>
-			<string></string>
-			<key>pfm_description_reference</key>
-			<string>Optional. If set to true, mobile account users will not be visible in a user list. In some cases mobile users will show up as network users.</string>
+			<string>If 'true', the system hides mobile account users in a user list. In some cases, mobile users show up as network users.</string>
 			<key>pfm_exclude</key>
 			<array>
 				<dict>
@@ -312,9 +299,7 @@ The payload organization for a payload need not match the payload organization i
 			<key>pfm_default</key>
 			<false/>
 			<key>pfm_description</key>
-			<string></string>
-			<key>pfm_description_reference</key>
-			<string>Optional. When showing a user list, set to true to show network users.</string>
+			<string>If 'true', the system shows network users when showing a user list.</string>
 			<key>pfm_exclude</key>
 			<array>
 				<dict>
@@ -342,9 +327,7 @@ The payload organization for a payload need not match the payload organization i
 			<key>pfm_default</key>
 			<false/>
 			<key>pfm_description</key>
-			<string></string>
-			<key>pfm_description_reference</key>
-			<string>Optional. When showing a user list, set to false to hide the administrator users.</string>
+			<string>If 'true', the system hides administrator users when showing a user list.</string>
 			<key>pfm_exclude</key>
 			<array>
 				<dict>
@@ -372,9 +355,7 @@ The payload organization for a payload need not match the payload organization i
 			<key>pfm_default</key>
 			<false/>
 			<key>pfm_description</key>
-			<string></string>
-			<key>pfm_description_reference</key>
-			<string>Optional. When showing a list of users, set to true to display Other... users.</string>
+			<string>If 'true', the system displays “Other...” when it shows a list of users.</string>
 			<key>pfm_exclude</key>
 			<array>
 				<dict>
@@ -402,9 +383,7 @@ The payload organization for a payload need not match the payload organization i
 			<key>pfm_default</key>
 			<false/>
 			<key>pfm_description</key>
-			<string></string>
-			<key>pfm_description_reference</key>
-			<string>Optional. If set to true, the Sleep button item will be hidden.</string>
+			<string>If 'true', the system disables the Sleep button.</string>
 			<key>pfm_name</key>
 			<string>SleepDisabled</string>
 			<key>pfm_title</key>
@@ -416,9 +395,7 @@ The payload organization for a payload need not match the payload organization i
 			<key>pfm_default</key>
 			<false/>
 			<key>pfm_description</key>
-			<string></string>
-			<key>pfm_description_reference</key>
-			<string>Optional. If set to true, the Restart item will be hidden.</string>
+			<string>If 'true', the system disables the Restart item.</string>
 			<key>pfm_name</key>
 			<string>RestartDisabled</string>
 			<key>pfm_title</key>
@@ -430,9 +407,7 @@ The payload organization for a payload need not match the payload organization i
 			<key>pfm_default</key>
 			<false/>
 			<key>pfm_description</key>
-			<string></string>
-			<key>pfm_description_reference</key>
-			<string>Optional. If set to true, the Shut Down button item will be hidden.</string>
+			<string>If 'true', the system disables the Shut Down button.</string>
 			<key>pfm_name</key>
 			<string>ShutDownDisabled</string>
 			<key>pfm_title</key>
@@ -444,9 +419,7 @@ The payload organization for a payload need not match the payload organization i
 			<key>pfm_default</key>
 			<false/>
 			<key>pfm_description</key>
-			<string></string>
-			<key>pfm_description_reference</key>
-			<string>Optional. If set to true, the Restart menu item will be disabled when the user is logged in.</string>
+			<string>If 'true', the system disables the Restart menu item when the user is logged in.</string>
 			<key>pfm_name</key>
 			<string>RestartDisabledWhileLoggedIn</string>
 			<key>pfm_title</key>
@@ -458,9 +431,7 @@ The payload organization for a payload need not match the payload organization i
 			<key>pfm_default</key>
 			<false/>
 			<key>pfm_description</key>
-			<string></string>
-			<key>pfm_description_reference</key>
-			<string>Optional. If set to true, the Shut Down menu item will be disabled when the user is logged in.</string>
+			<string>If 'true', the system disables the Shut Down menu item when the user is logged in.</string>
 			<key>pfm_name</key>
 			<string>ShutDownDisabledWhileLoggedIn</string>
 			<key>pfm_title</key>
@@ -472,9 +443,7 @@ The payload organization for a payload need not match the payload organization i
 			<key>pfm_default</key>
 			<false/>
 			<key>pfm_description</key>
-			<string></string>
-			<key>pfm_description_reference</key>
-			<string>Optional. If set to true, the Power Off menu item will be disabled when the user is logged in.</string>
+			<string>If 'true', the system disables the Power Off menu item when the user is logged in.</string>
 			<key>pfm_name</key>
 			<string>PowerOffDisabledWhileLoggedIn</string>
 			<key>pfm_title</key>
@@ -486,10 +455,7 @@ The payload organization for a payload need not match the payload organization i
 			<key>pfm_default</key>
 			<false/>
 			<key>pfm_description</key>
-			<string></string>
-			<key>pfm_description_reference</key>
-			<string>Optional. If set to true, this will disable the Log Out menu item when the user is logged in.
-Availability: Available in macOS 10.13 and later.</string>
+			<string>If 'true', the system disables the Log Out menu item when the user is logged in. Available in macOS 10.13 and later.</string>
 			<key>pfm_macos_min</key>
 			<string>10.13</string>
 			<key>pfm_name</key>
@@ -498,15 +464,20 @@ Availability: Available in macOS 10.13 and later.</string>
 			<string>Disable the Log Out menu item while logged in</string>
 			<key>pfm_type</key>
 			<string>boolean</string>
+			<key>pfmx_supported_oses</key>
+			<dict>
+				<key>macOS</key>
+				<dict>
+					<key>pfmx_introduced</key>
+					<string>10.13</string>
+				</dict>
+			</dict>
 		</dict>
 		<dict>
 			<key>pfm_default</key>
 			<false/>
 			<key>pfm_description</key>
-			<string></string>
-			<key>pfm_description_reference</key>
-			<string>Optional. If set to true, the immediate Screen Lock functions will be disabled.
-Availability: Available in macOS 10.13 and later.</string>
+			<string>If 'true', the system disables the immediate Screen Lock functions. Available in macOS 10.13 and later.</string>
 			<key>pfm_macos_min</key>
 			<string>10.13</string>
 			<key>pfm_name</key>
@@ -515,14 +486,20 @@ Availability: Available in macOS 10.13 and later.</string>
 			<string>Disable the immediate Screen Lock function</string>
 			<key>pfm_type</key>
 			<string>boolean</string>
+			<key>pfmx_supported_oses</key>
+			<dict>
+				<key>macOS</key>
+				<dict>
+					<key>pfmx_introduced</key>
+					<string>10.13</string>
+				</dict>
+			</dict>
 		</dict>
 		<dict>
 			<key>pfm_default</key>
 			<true/>
 			<key>pfm_description</key>
 			<string>A loginwindow password will be required to login.</string>
-			<key>pfm_description_reference</key>
-			<string></string>
 			<key>pfm_documentation_source</key>
 			<string></string>
 			<key>pfm_name</key>
@@ -533,28 +510,74 @@ Availability: Available in macOS 10.13 and later.</string>
 			<string>boolean</string>
 		</dict>
 		<dict>
-			<key>pfm_default</key>
-			<true/>
 			<key>pfm_description</key>
-			<string>Both the EFI Login and loginwindow password will be required to login.</string>
-			<key>pfm_description_reference</key>
-			<string></string>
+			<string>The user short name for an existing user to set up auto login.</string>
+			<key>pfm_macos_min</key>
+			<string>14.0</string>
+			<key>pfm_name</key>
+			<string>AutologinUsername</string>
+			<key>pfm_type</key>
+			<string>string</string>
+			<key>pfmx_supported_oses</key>
+			<dict>
+				<key>macOS</key>
+				<dict>
+					<key>pfmx_allow_manual_install</key>
+					<false/>
+					<key>pfmx_introduced</key>
+					<string>14.0</string>
+				</dict>
+			</dict>
+		</dict>
+		<dict>
+			<key>pfm_description</key>
+			<string>A user password to set up auto login, must match the "AutologinUsername" user's current password.</string>
+			<key>pfm_macos_min</key>
+			<string>14.0</string>
+			<key>pfm_name</key>
+			<string>AutologinPassword</string>
+			<key>pfm_type</key>
+			<string>string</string>
+			<key>pfmx_supported_oses</key>
+			<dict>
+				<key>macOS</key>
+				<dict>
+					<key>pfmx_allow_manual_install</key>
+					<false/>
+					<key>pfmx_introduced</key>
+					<string>14.0</string>
+				</dict>
+			</dict>
+		</dict>
+		<dict>
+			<key>pfm_default</key>
+			<false/>
+			<key>pfm_description</key>
+			<string>If 'true', the system disables the automatic login option when using FileVault.</string>
 			<key>pfm_documentation_source</key>
 			<string></string>
+			<key>pfm_macos_min</key>
+			<string>10.9</string>
 			<key>pfm_name</key>
 			<string>DisableFDEAutoLogin</string>
 			<key>pfm_title</key>
 			<string>Disable automatic login if FileVault is enabled</string>
 			<key>pfm_type</key>
 			<string>boolean</string>
+			<key>pfmx_supported_oses</key>
+			<dict>
+				<key>macOS</key>
+				<dict>
+					<key>pfmx_introduced</key>
+					<string>10.9</string>
+				</dict>
+			</dict>
 		</dict>
 		<dict>
 			<key>pfm_default</key>
-			<true/>
+			<false/>
 			<key>pfm_description</key>
-			<string>Disallows users to use &gt;console at the login window.</string>
-			<key>pfm_description_reference</key>
-			<string>Optional. If set to true, the Other user will disregard use of the '>console' special user name.</string>
+			<string>If 'true', the system disregards the '&gt;console' special user name, which provides a command line UI.</string>
 			<key>pfm_name</key>
 			<string>DisableConsoleAccess</string>
 			<key>pfm_title</key>
@@ -567,8 +590,6 @@ Availability: Available in macOS 10.13 and later.</string>
 			<true/>
 			<key>pfm_description</key>
 			<string>Allows external accounts to log in.</string>
-			<key>pfm_description_reference</key>
-			<string></string>
 			<key>pfm_documentation_source</key>
 			<string></string>
 			<key>pfm_name</key>
@@ -583,8 +604,6 @@ Availability: Available in macOS 10.13 and later.</string>
 			<true/>
 			<key>pfm_description</key>
 			<string>Allows Mac administrators on the computer to refresh or disable the management features.</string>
-			<key>pfm_description_reference</key>
-			<string></string>
 			<key>pfm_documentation_source</key>
 			<string></string>
 			<key>pfm_name</key>
@@ -598,9 +617,19 @@ Availability: Available in macOS 10.13 and later.</string>
 			<key>pfm_default</key>
 			<true/>
 			<key>pfm_description</key>
+			<string>Reopens windows that were open at time of logout</string>
+			<key>pfm_name</key>
+			<string>TALLogoutSavesState</string>
+			<key>pfm_title</key>
+			<string>Reopen windows when logging back in</string>
+			<key>pfm_type</key>
+			<string>boolean</string>
+		</dict>
+		<dict>
+			<key>pfm_default</key>
+			<true/>
+			<key>pfm_description</key>
 			<string>Forces the name of the Mac to be set as the computer record name.</string>
-			<key>pfm_description_reference</key>
-			<string></string>
 			<key>pfm_documentation_source</key>
 			<string></string>
 			<key>pfm_name</key>
@@ -612,20 +641,20 @@ Availability: Available in macOS 10.13 and later.</string>
 		</dict>
 		<dict>
 			<key>pfm_description</key>
-			<string>User or group GUIDs of users that are allowed to log in. An asterisk '*' string specifies all users or groups.</string>
-			<key>pfm_description_reference</key>
-			<string>Optional. User or group GUIDs of users that are allowed to log in. An asterisk '*' string specifies all users or groups.</string>
+			<string>The list of user GUIDs or group GUIDs of users that the system allows to log in. An asterisk ('*') string specifies all users or groups.</string>
 			<key>pfm_name</key>
 			<string>AllowList</string>
 			<key>pfm_subkeys</key>
 			<array>
 				<dict>
 					<key>pfm_description</key>
-					<string></string>
+					<string>A user or group GUID.</string>
 					<key>pfm_format</key>
 					<string>^[0-9A-Za-z]{8}-[0-9A-Za-z]{4}-[0-9A-Za-z]{4}-[0-9A-Za-z]{4}-[0-9A-Za-z]{12}$</string>
 					<key>pfm_name</key>
-					<string>GUID</string>
+					<string>AllowListItem</string>
+					<key>pfm_require</key>
+					<string>always</string>
 					<key>pfm_title</key>
 					<string>User or Group GUID</string>
 					<key>pfm_type</key>
@@ -641,20 +670,20 @@ Availability: Available in macOS 10.13 and later.</string>
 		</dict>
 		<dict>
 			<key>pfm_description</key>
-			<string>User or group GUIDs of users that cannot log in. This list takes priority over the list in the AllowList key.</string>
-			<key>pfm_description_reference</key>
-			<string>Optional. User or group GUIDs of users that cannot log in. This list takes priority over the list in the AllowList key.</string>
+			<string>The list of user GUIDs or group GUIDs of users that the system disallows to log in. This list takes priority over the list in the 'AllowList' key.</string>
 			<key>pfm_name</key>
 			<string>DenyList</string>
 			<key>pfm_subkeys</key>
 			<array>
 				<dict>
 					<key>pfm_description</key>
-					<string></string>
+					<string>A user or group GUID.</string>
 					<key>pfm_format</key>
 					<string>^[0-9A-Za-z]{8}-[0-9A-Za-z]{4}-[0-9A-Za-z]{4}-[0-9A-Za-z]{4}-[0-9A-Za-z]{12}$</string>
 					<key>pfm_name</key>
-					<string>GUID</string>
+					<string>DenyListItem</string>
+					<key>pfm_require</key>
+					<string>always</string>
 					<key>pfm_title</key>
 					<string>User or Group GUID</string>
 					<key>pfm_type</key>
@@ -671,8 +700,6 @@ Availability: Available in macOS 10.13 and later.</string>
 		<dict>
 			<key>pfm_description</key>
 			<string>Permit only local users to log in. Network users won't be allowed to log in.</string>
-			<key>pfm_description_reference</key>
-			<string></string>
 			<key>pfm_documentation_source</key>
 			<string></string>
 			<key>pfm_name</key>
@@ -685,8 +712,6 @@ Availability: Available in macOS 10.13 and later.</string>
 		<dict>
 			<key>pfm_description</key>
 			<string>Local users are forced to use any available workgroup settings.</string>
-			<key>pfm_description_reference</key>
-			<string></string>
 			<key>pfm_documentation_source</key>
 			<string></string>
 			<key>pfm_name</key>
@@ -699,8 +724,6 @@ Availability: Available in macOS 10.13 and later.</string>
 		<dict>
 			<key>pfm_description</key>
 			<string>If users are part of a nested workgroup, only the settings of the user's workgroup are enforced.</string>
-			<key>pfm_description_reference</key>
-			<string></string>
 			<key>pfm_documentation_source</key>
 			<string></string>
 			<key>pfm_name</key>
@@ -713,8 +736,6 @@ Availability: Available in macOS 10.13 and later.</string>
 		<dict>
 			<key>pfm_description</key>
 			<string>If users are part of a nested workgroup, all nested workgroup settings are enforced.</string>
-			<key>pfm_description_reference</key>
-			<string></string>
 			<key>pfm_documentation_source</key>
 			<string></string>
 			<key>pfm_name</key>
@@ -727,8 +748,6 @@ Availability: Available in macOS 10.13 and later.</string>
 		<dict>
 			<key>pfm_description</key>
 			<string>If the workgroup has a specific dialog, that dialog is shown when users log in.</string>
-			<key>pfm_description_reference</key>
-			<string></string>
 			<key>pfm_documentation_source</key>
 			<string></string>
 			<key>pfm_name</key>
@@ -740,9 +759,7 @@ Availability: Available in macOS 10.13 and later.</string>
 		</dict>
 		<dict>
 			<key>pfm_description</key>
-			<string>Disable the "Change Password…" button in the Users &amp; Groups preference pane.</string>
-			<key>pfm_description_reference</key>
-			<string></string>
+			<string>Enable or disable the "Change Password…" button in the Users &amp; Groups preference pane.</string>
 			<key>pfm_documentation_source</key>
 			<string></string>
 			<key>pfm_name</key>
@@ -754,9 +771,7 @@ Availability: Available in macOS 10.13 and later.</string>
 		</dict>
 		<dict>
 			<key>pfm_description</key>
-			<string>Numer of tries until password hint is shown. (0 = disable password hints)</string>
-			<key>pfm_description_reference</key>
-			<string></string>
+			<string>Number of tries until password hint is shown (0 = disable password hints).</string>
 			<key>pfm_documentation_source</key>
 			<string></string>
 			<key>pfm_name</key>
@@ -770,23 +785,29 @@ Availability: Available in macOS 10.13 and later.</string>
 			<key>pfm_default</key>
 			<false/>
 			<key>pfm_description</key>
-			<string></string>
-			<key>pfm_description_reference</key>
-			<string></string>
+			<string>If 'true', the system shows the Input Menu in the login window.</string>
 			<key>pfm_documentation_source</key>
 			<string></string>
+			<key>pfm_macos_min</key>
+			<string>10.8</string>
 			<key>pfm_name</key>
 			<string>showInputMenu</string>
 			<key>pfm_title</key>
 			<string>Show input menu in login window</string>
 			<key>pfm_type</key>
 			<string>boolean</string>
+			<key>pfmx_supported_oses</key>
+			<dict>
+				<key>macOS</key>
+				<dict>
+					<key>pfmx_introduced</key>
+					<string>10.8</string>
+				</dict>
+			</dict>
 		</dict>
 		<dict>
 			<key>pfm_description</key>
 			<string>Hides users defined in the list from the login window under the Other button</string>
-			<key>pfm_description_reference</key>
-			<string>Optional. Users defined are hidden from the login list.</string>
 			<key>pfm_name</key>
 			<string>HiddenUsersList</string>
 			<key>pfm_subkeys</key>
@@ -819,8 +840,33 @@ Availability: Available in macOS 10.13 and later.</string>
 	<key>pfm_title</key>
 	<string>Login Window</string>
 	<key>pfm_unique</key>
-	<true/>
+	<false/>
 	<key>pfm_version</key>
-	<integer>5</integer>
+	<integer>7</integer>
+	<key>pfmx_supported_oses</key>
+	<dict>
+		<key>macOS</key>
+		<dict>
+			<key>pfmx_allow_manual_install</key>
+			<true/>
+			<key>pfmx_device_channel</key>
+			<true/>
+			<key>pfmx_introduced</key>
+			<string>10.7</string>
+			<key>pfmx_multiple</key>
+			<true/>
+			<key>pfmx_requires_dep</key>
+			<false/>
+			<key>pfmx_user_approved_mdm</key>
+			<false/>
+			<key>pfmx_user_channel</key>
+			<false/>
+			<key>pfmx_user_enrollment</key>
+			<dict>
+				<key>pfmx_mode</key>
+				<string>forbidden</string>
+			</dict>
+		</dict>
+	</dict>
 </dict>
 </plist>

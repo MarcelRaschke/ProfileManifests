@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>pfm_app_url</key>
+	<string>https://gitlab.rrze.uni-erlangen.de/faumac/networkShareMounter</string>
+	<key>pfm_description</key>
+	<string>Network Share Mounter settings</string>
+	<key>pfm_documentation_url</key>
+	<string>https://gitlab.rrze.uni-erlangen.de/faumac/networkShareMounter</string>
+	<key>pfm_domain</key>
+	<string>de.fau.rrze.NetworkShareMounter</string>
+	<key>pfm_format_version</key>
+	<integer>1</integer>
+	<key>pfm_last_modified</key>
+	<date>2024-12-29T05:57:28Z</date>
+	<key>pfm_platforms</key>
+	<array>
+		<string>macOS</string>
+	</array>
+	<key>pfm_subkeys</key>
+	<array>
+		<dict>
+			<key>pfm_default</key>
+			<string>Network Share Mounter settings</string>
+			<key>pfm_description</key>
+			<string>The human-readable description of this payload. This description appears on the Detail screen.</string>
+			<key>pfm_name</key>
+			<string>PayloadDescription</string>
+			<key>pfm_title</key>
+			<string>Payload Description</string>
+			<key>pfm_type</key>
+			<string>string</string>
+		</dict>
+		<dict>
+			<key>pfm_default</key>
+			<string>Network Share Mounter</string>
+			<key>pfm_description</key>
+			<string>The human-readable name for the profile payload. The name appears on the Detail screen and doesn't need to be unique.</string>
+			<key>pfm_name</key>
+			<string>PayloadDisplayName</string>
+			<key>pfm_require</key>
+			<string>always</string>
+			<key>pfm_title</key>
+			<string>Payload Display Name</string>
+			<key>pfm_type</key>
+			<string>string</string>
+		</dict>
+		<dict>
+			<key>pfm_default</key>
+			<string>de.fau.rrze.NetworkShareMounter</string>
+			<key>pfm_description</key>
+			<string>The reverse-DNS-style identifier for the payload. This identifier is usually the same as the TopLevel value, with an additional appended component. This string must be unique within the profile.
+During a profile replacement, the system updates payloads with the same 'PayloadIdentifier' and 'PayloadUUID' in the old and new profiles.</string>
+			<key>pfm_description_reference</key>
+			<string>A reverse-DNS-style identifier for the specific payload. It is usually the same identifier as the root-level PayloadIdentifier value with an additional component appended.</string>
+			<key>pfm_name</key>
+			<string>PayloadIdentifier</string>
+			<key>pfm_require</key>
+			<string>always</string>
+			<key>pfm_title</key>
+			<string>Payload Identifier</string>
+			<key>pfm_type</key>
+			<string>string</string>
+		</dict>
+		<dict>
+			<key>pfm_default</key>
+			<string>de.fau.rrze.NetworkShareMounter</string>
+			<key>pfm_description</key>
+			<string>The payload type, which each payload domain's reference page specifies.</string>
+			<key>pfm_description_reference</key>
+			<string>The payload type.</string>
+			<key>pfm_name</key>
+			<string>PayloadType</string>
+			<key>pfm_require</key>
+			<string>always</string>
+			<key>pfm_title</key>
+			<string>Payload Type</string>
+			<key>pfm_type</key>
+			<string>string</string>
+		</dict>
+		<dict>
+			<key>pfm_default</key>
+			<string></string>
+			<key>pfm_description</key>
+			<string>The globally unique identifier for the payload. The actual content is unimportant, but must be globally unique. In macOS, use 'uuidgen' to generate UUIDs.
+During a profile replacement, the system updates payloads with the same 'PayloadIdentifier' and 'PayloadUUID' in the old and new profiles.</string>
+			<key>pfm_description_reference</key>
+			<string>A globally unique identifier for the payload. The actual content is unimportant, but it must be globally unique. In macOS, you can use uuidgen to generate reasonable UUIDs.</string>
+			<key>pfm_format</key>
+			<string>^[0-9A-Za-z]{8}-[0-9A-Za-z]{4}-[0-9A-Za-z]{4}-[0-9A-Za-z]{4}-[0-9A-Za-z]{12}$</string>
+			<key>pfm_name</key>
+			<string>PayloadUUID</string>
+			<key>pfm_require</key>
+			<string>always</string>
+			<key>pfm_title</key>
+			<string>Payload UUID</string>
+			<key>pfm_type</key>
+			<string>string</string>
+		</dict>
+		<dict>
+			<key>pfm_default</key>
+			<integer>1</integer>
+			<key>pfm_description</key>
+			<string>The version of this specific payload.</string>
+			<key>pfm_description_reference</key>
+			<string>The version number of the individual payload.
+A profile can consist of payloads with different version numbers. For example, changes to the VPN software in iOS might introduce a new payload version to support additional features, but Mail payload versions would not necessarily change in the same release.</string>
+			<key>pfm_name</key>
+			<string>PayloadVersion</string>
+			<key>pfm_range_list</key>
+			<array>
+				<integer>1</integer>
+			</array>
+			<key>pfm_require</key>
+			<string>always</string>
+			<key>pfm_title</key>
+			<string>Payload Version</string>
+			<key>pfm_type</key>
+			<string>integer</string>
+		</dict>
+		<dict>
+			<key>pfm_description</key>
+			<string>The human-readable string containing the name of the organization that provides the profile. This value doesn't need to match the organization payload value in the enclosing dictionary.</string>
+			<key>pfm_name</key>
+			<string>PayloadOrganization</string>
+			<key>pfm_title</key>
+			<string>Payload Organization</string>
+			<key>pfm_type</key>
+			<string>string</string>
+		</dict>
+		<dict>
+			<key>pfm_app_min</key>
+			<string>2</string>
+			<key>pfm_default</key>
+			<false/>
+			<key>pfm_description</key>
+			<string>If set to true, the app will be launched on user-login.</string>
+			<key>pfm_name</key>
+			<string>autostart</string>
+			<key>pfm_title</key>
+			<string>Enable Autostart</string>
+			<key>pfm_type</key>
+			<string>boolean</string>
+		</dict>
+		<dict>
+			<key>pfm_app_min</key>
+			<string>2</string>
+			<key>pfm_default</key>
+			<true/>
+			<key>pfm_description</key>
+			<string>Optional. If set to false, the user can not change the Autostart option.</string>
+			<key>pfm_name</key>
+			<string>canChangeAutostart</string>
+			<key>pfm_title</key>
+			<string>Can Change Autostart</string>
+			<key>pfm_type</key>
+			<string>boolean</string>
+		</dict>
+		<dict>
+			<key>pfm_app_min</key>
+			<string>3.0.4</string>
+			<key>pfm_default</key>
+			<true/>
+			<key>pfm_description</key>
+			<string>Turns the auto update framework on or off, so the App can update itself.</string>
+			<key>pfm_name</key>
+			<string>enableAutoUpdater</string>
+			<key>pfm_title</key>
+			<string>Enable AutoUpdater Framework</string>
+			<key>pfm_type</key>
+			<string>boolean</string>
+		</dict>
+		<dict>
+			<key>pfm_app_min</key>
+			<string>2</string>
+			<key>pfm_default</key>
+			<string>https://www.anleitungen.rrze.fau.de/betriebssysteme/apple-macos-und-ios/macos/#networksharemounter</string>
+			<key>pfm_description</key>
+			<string>Configure a help URL to help users interact with the application.</string>
+			<key>pfm_format</key>
+			<string>^http[s]?:\/\/\S*$</string>
+			<key>pfm_name</key>
+			<string>helpURL</string>
+			<key>pfm_title</key>
+			<string>Help URL</string>
+			<key>pfm_type</key>
+			<string>string</string>
+		</dict>
+		<dict>
+			<key>pfm_app_min</key>
+			<string>2</string>
+			<key>pfm_default</key>
+			<true/>
+			<key>pfm_description</key>
+			<string>Configure a help URL to help users interact with the application.</string>
+			<key>pfm_name</key>
+			<string>unmountOnExit</string>
+			<key>pfm_title</key>
+			<string>Unmount Shares on Exit</string>
+			<key>pfm_type</key>
+			<string>boolean</string>
+		</dict>
+		<dict>
+			<key>pfm_app_min</key>
+			<string>2</string>
+			<key>pfm_default</key>
+			<false/>
+			<key>pfm_description</key>
+			<string>With version 3 the old default mount path (~/Netzlaufwerke/) is deprecated. New default is (/Volumes). This key allows administrators to adopt this default value ahead of the official release. This option is provided to ease the transition for administrators.</string>
+			<key>pfm_name</key>
+			<string>useNewDefaultLocation</string>
+			<key>pfm_title</key>
+			<string>Use the new default mount location</string>
+			<key>pfm_type</key>
+			<string>boolean</string>
+		</dict>
+		<dict>
+			<key>pfm_app_min</key>
+			<string>2</string>
+			<key>pfm_default</key>
+			<string></string>
+			<key>pfm_description</key>
+			<string>Path where network shares will be mounted. Leave blank for the default value (highly recommended).</string>
+			<key>pfm_documentation_url</key>
+			<string>https://gitlab.rrze.fau.de/faumac/networkShareMounter#important-note-for-the-location-cleanuplocationdirectory-and-usenewdefaultlocation-values</string>
+			<key>pfm_name</key>
+			<string>location</string>
+			<key>pfm_title</key>
+			<string>Mount path</string>
+			<key>pfm_type</key>
+			<string>string</string>
+		</dict>
+		<dict>
+			<key>pfm_app_min</key>
+			<string>2</string>
+			<key>pfm_default</key>
+			<false/>
+			<key>pfm_description</key>
+			<string>If set to true, the mount location will be cleaned up from obstructing files and directories. Please read the wiki before enabling this option and use it with caution!</string>
+			<key>pfm_documentation_url</key>
+			<string>https://gitlab.rrze.fau.de/faumac/networkShareMounter#important-note-for-the-location-cleanuplocationdirectory-and-usenewdefaultlocation-values</string>
+			<key>pfm_name</key>
+			<string>cleanupLocationDirectory</string>
+			<key>pfm_title</key>
+			<string>Clean up obstructing files and directories</string>
+			<key>pfm_type</key>
+			<string>boolean</string>
+		</dict>
+		<dict>
+			<key>pfm_app_min</key>
+			<string>2</string>
+			<key>pfm_default</key>
+			<true/>
+			<key>pfm_description</key>
+			<string>Show exit button in the menu bar.</string>
+			<key>pfm_name</key>
+			<string>canQuit</string>
+			<key>pfm_title</key>
+			<string>Show Exit</string>
+			<key>pfm_type</key>
+			<string>boolean</string>
+		</dict>
+		<dict>
+			<key>pfm_app_min</key>
+			<string>3.0.0</string>
+			<key>pfm_default</key>
+			<string></string>
+			<key>pfm_description</key>
+			<string>Kerberos/AD Domain for user authentication. If set, automatic AD/Kerberos authentication and ticket renewal will be enabled.</string>
+			<key>pfm_name</key>
+			<string>kerberosRealm</string>
+			<key>pfm_title</key>
+			<string>Kerberos Realm</string>
+			<key>pfm_type</key>
+			<string>string</string>
+		</dict>
+		<dict>
+			<key>pfm_app_min</key>
+			<string>3</string>
+			<key>pfm_description</key>
+			<string>Array with managed network shares.</string>
+			<key>pfm_documentation_url</key>
+			<string>https://gitlab.rrze.fau.de/faumac/networkShareMounter#configuration-preferences</string>
+			<key>pfm_name</key>
+			<string>managedNetworkShares</string>
+			<key>pfm_subkeys</key>
+			<array>
+				<dict>
+					<key>pfm_name</key>
+					<string>managedNetworkShares</string>
+					<key>pfm_subkeys</key>
+					<array>
+						<dict>
+							<key>pfm_description</key>
+							<string>Example: smb://filer.your.domain.tld/share. Note: %USERNAME% will be replaced with the current user's login name.</string>
+							<key>pfm_format</key>
+							<string>^(smb|afp|https)://.*$</string>
+							<key>pfm_name</key>
+							<string>networkShare</string>
+							<key>pfm_require</key>
+							<string>always</string>
+							<key>pfm_title</key>
+							<string>Server and share</string>
+							<key>pfm_type</key>
+							<string>string</string>
+							<key>pfm_value_placeholder</key>
+							<string>smb://filer.yourdomain.tld/share</string>
+						</dict>
+						<dict>
+							<key>pfm_default</key>
+							<string>krb</string>
+							<key>pfm_description</key>
+							<string>Authentication type for the share, it can be either through Kerberos (krb) or using a username/password (auth). Default: Kerberos.</string>
+							<key>pfm_name</key>
+							<string>authType</string>
+							<key>pfm_range_list</key>
+							<array>
+								<string>krb</string>
+								<string>password</string>
+								<string>guest</string>
+							</array>
+							<key>pfm_range_list_titles</key>
+							<array>
+								<string>Kerberos</string>
+								<string>Password</string>
+								<string>Guest</string>
+							</array>
+							<key>pfm_require</key>
+							<string>always</string>
+							<key>pfm_title</key>
+							<string>Authentication type</string>
+							<key>pfm_type</key>
+							<string>string</string>
+						</dict>
+						<dict>
+							<key>pfm_description</key>
+							<string>Optional: Predefine a username for authentication using username/password</string>
+							<key>pfm_name</key>
+							<string>username</string>
+							<key>pfm_title</key>
+							<string>Username (Optional)</string>
+							<key>pfm_type</key>
+							<string>string</string>
+						</dict>
+						<dict>
+							<key>pfm_description</key>
+							<string>Optional: Change the mount point name for the network share. Leave blank for the default value (recommended)</string>
+							<key>pfm_name</key>
+							<string>mountPoint</string>
+							<key>pfm_title</key>
+							<string>Mount point name (Optional)</string>
+							<key>pfm_type</key>
+							<string>string</string>
+						</dict>
+					</array>
+					<key>pfm_type</key>
+					<string>dictionary</string>
+				</dict>
+			</array>
+			<key>pfm_title</key>
+			<string>Managed network shares</string>
+			<key>pfm_type</key>
+			<string>array</string>
+		</dict>
+		<dict>
+			<key>pfm_app_deprecated</key>
+			<string>3</string>
+			<key>pfm_description</key>
+			<string>Array with all network shares. Example: smb://filer.your.domain/share. Note: %USERNAME% will be replaced with the login name of the current user.</string>
+			<key>pfm_documentation_url</key>
+			<string>https://gitlab.rrze.fau.de/faumac/networkShareMounter</string>
+			<key>pfm_name</key>
+			<string>networkShares</string>
+			<key>pfm_subkeys</key>
+			<array>
+				<dict>
+					<key>pfm_format</key>
+					<string>^smb://\S*/.+$</string>
+					<key>pfm_type</key>
+					<string>string</string>
+					<key>pfm_value_placeholder</key>
+					<string>smb://filer.your.domain/share</string>
+				</dict>
+			</array>
+			<key>pfm_title</key>
+			<string>Network shares</string>
+			<key>pfm_type</key>
+			<string>array</string>
+		</dict>
+	</array>
+	<key>pfm_targets</key>
+	<array>
+		<string>system</string>
+		<string>user</string>
+	</array>
+	<key>pfm_title</key>
+	<string>Network Share Mounter</string>
+	<key>pfm_unique</key>
+	<true/>
+	<key>pfm_version</key>
+	<integer>3</integer>
+</dict>
+</plist>

@@ -13,7 +13,7 @@
 	<key>pfm_format_version</key>
 	<integer>1</integer>
 	<key>pfm_last_modified</key>
-	<date>2021-12-05T03:51:11Z</date>
+	<date>2025-01-15T11:02:30Z</date>
 	<key>pfm_macos_min</key>
 	<string>10.13</string>
 	<key>pfm_platforms</key>
@@ -26,7 +26,7 @@
 			<key>pfm_default</key>
 			<string>Configures MunkiAdmin app settings</string>
 			<key>pfm_description</key>
-			<string>Description of the payload</string>
+			<string>The human-readable description of this payload. This description appears on the Detail screen.</string>
 			<key>pfm_description_reference</key>
 			<string>Optional. A human-readable description of this payload. This description is shown on the Detail screen.</string>
 			<key>pfm_name</key>
@@ -40,7 +40,7 @@
 			<key>pfm_default</key>
 			<string>MunkiAdmin app</string>
 			<key>pfm_description</key>
-			<string>Name of the payload</string>
+			<string>The human-readable name for the profile payload. The name appears on the Detail screen and doesn't need to be unique.</string>
 			<key>pfm_description_reference</key>
 			<string>A human-readable name for the profile payload. This name is displayed on the Detail screen. It does not have to be unique.</string>
 			<key>pfm_name</key>
@@ -56,7 +56,8 @@
 			<key>pfm_default</key>
 			<string>com.hjuutilainen.MunkiAdmin</string>
 			<key>pfm_description</key>
-			<string>A unique identifier for the payload, dot-delimited. Usually root PayloadIdentifier+subidentifier</string>
+			<string>The reverse-DNS-style identifier for the payload. This identifier is usually the same as the TopLevel value, with an additional appended component. This string must be unique within the profile.
+During a profile replacement, the system updates payloads with the same 'PayloadIdentifier' and 'PayloadUUID' in the old and new profiles.</string>
 			<key>pfm_description_reference</key>
 			<string>A reverse-DNS-style identifier for the specific payload. It is usually the same identifier as the root-level PayloadIdentifier value with an additional component appended.</string>
 			<key>pfm_name</key>
@@ -72,7 +73,7 @@
 			<key>pfm_default</key>
 			<string>com.hjuutilainen.MunkiAdmin</string>
 			<key>pfm_description</key>
-			<string>The type of the payload, a reverse dns string</string>
+			<string>The payload type, which each payload domain's reference page specifies.</string>
 			<key>pfm_description_reference</key>
 			<string>The payload type.</string>
 			<key>pfm_name</key>
@@ -88,7 +89,8 @@
 			<key>pfm_default</key>
 			<string></string>
 			<key>pfm_description</key>
-			<string>Unique identifier for the payload (format 01234567-89AB-CDEF-0123-456789ABCDEF)</string>
+			<string>The globally unique identifier for the payload. The actual content is unimportant, but must be globally unique. In macOS, use 'uuidgen' to generate UUIDs.
+During a profile replacement, the system updates payloads with the same 'PayloadIdentifier' and 'PayloadUUID' in the old and new profiles.</string>
 			<key>pfm_description_reference</key>
 			<string>A globally unique identifier for the payload. The actual content is unimportant, but it must be globally unique. In macOS, you can use uuidgen to generate reasonable UUIDs.</string>
 			<key>pfm_format</key>
@@ -106,12 +108,16 @@
 			<key>pfm_default</key>
 			<integer>1</integer>
 			<key>pfm_description</key>
-			<string>The version of the whole configuration profile.</string>
+			<string>The version of this specific payload.</string>
 			<key>pfm_description_reference</key>
 			<string>The version number of the individual payload.
 A profile can consist of payloads with different version numbers. For example, changes to the VPN software in iOS might introduce a new payload version to support additional features, but Mail payload versions would not necessarily change in the same release.</string>
 			<key>pfm_name</key>
 			<string>PayloadVersion</string>
+			<key>pfm_range_list</key>
+			<array>
+				<integer>1</integer>
+			</array>
 			<key>pfm_require</key>
 			<string>always</string>
 			<key>pfm_title</key>
@@ -121,7 +127,7 @@ A profile can consist of payloads with different version numbers. For example, c
 		</dict>
 		<dict>
 			<key>pfm_description</key>
-			<string>This value describes the issuing organization of the profile, as displayed to the user.</string>
+			<string>The human-readable string containing the name of the organization that provides the profile. This value doesn't need to match the organization payload value in the enclosing dictionary.</string>
 			<key>pfm_description_reference</key>
 			<string>Optional. A human-readable string containing the name of the organization that provided the profile. The payload organization for a payload need not match the payload organization in the enclosing profile.</string>
 			<key>pfm_name</key>
@@ -293,6 +299,8 @@ A profile can consist of payloads with different version numbers. For example, c
 			<key>pfm_conditionals</key>
 			<array>
 				<dict>
+					<key>pfm_require</key>
+					<string>always</string>
 					<key>pfm_target_conditions</key>
 					<array>
 						<dict>
@@ -339,6 +347,8 @@ A profile can consist of payloads with different version numbers. For example, c
 			<key>pfm_conditionals</key>
 			<array>
 				<dict>
+					<key>pfm_require</key>
+					<string>always</string>
 					<key>pfm_target_conditions</key>
 					<array>
 						<dict>
@@ -385,6 +395,8 @@ A profile can consist of payloads with different version numbers. For example, c
 			<key>pfm_conditionals</key>
 			<array>
 				<dict>
+					<key>pfm_require</key>
+					<string>always</string>
 					<key>pfm_target_conditions</key>
 					<array>
 						<dict>
@@ -479,6 +491,8 @@ A profile can consist of payloads with different version numbers. For example, c
 			<key>pfm_conditionals</key>
 			<array>
 				<dict>
+					<key>pfm_require</key>
+					<string>always</string>
 					<key>pfm_target_conditions</key>
 					<array>
 						<dict>
@@ -629,6 +643,8 @@ A profile can consist of payloads with different version numbers. For example, c
 			<key>pfm_conditionals</key>
 			<array>
 				<dict>
+					<key>pfm_require</key>
+					<string>always</string>
 					<key>pfm_target_conditions</key>
 					<array>
 						<dict>
@@ -673,6 +689,8 @@ A profile can consist of payloads with different version numbers. For example, c
 			<key>pfm_conditionals</key>
 			<array>
 				<dict>
+					<key>pfm_require</key>
+					<string>always</string>
 					<key>pfm_target_conditions</key>
 					<array>
 						<dict>
@@ -717,6 +735,8 @@ A profile can consist of payloads with different version numbers. For example, c
 			<key>pfm_conditionals</key>
 			<array>
 				<dict>
+					<key>pfm_require</key>
+					<string>always</string>
 					<key>pfm_target_conditions</key>
 					<array>
 						<dict>
@@ -771,6 +791,8 @@ A profile can consist of payloads with different version numbers. For example, c
 			<key>pfm_conditionals</key>
 			<array>
 				<dict>
+					<key>pfm_require</key>
+					<string>always</string>
 					<key>pfm_target_conditions</key>
 					<array>
 						<dict>
@@ -815,6 +837,8 @@ A profile can consist of payloads with different version numbers. For example, c
 			<key>pfm_conditionals</key>
 			<array>
 				<dict>
+					<key>pfm_require</key>
+					<string>always</string>
 					<key>pfm_target_conditions</key>
 					<array>
 						<dict>
@@ -859,6 +883,8 @@ A profile can consist of payloads with different version numbers. For example, c
 			<key>pfm_conditionals</key>
 			<array>
 				<dict>
+					<key>pfm_require</key>
+					<string>always</string>
 					<key>pfm_target_conditions</key>
 					<array>
 						<dict>
@@ -903,6 +929,8 @@ A profile can consist of payloads with different version numbers. For example, c
 			<key>pfm_conditionals</key>
 			<array>
 				<dict>
+					<key>pfm_require</key>
+					<string>always</string>
 					<key>pfm_target_conditions</key>
 					<array>
 						<dict>
@@ -947,6 +975,8 @@ A profile can consist of payloads with different version numbers. For example, c
 			<key>pfm_conditionals</key>
 			<array>
 				<dict>
+					<key>pfm_require</key>
+					<string>always</string>
 					<key>pfm_target_conditions</key>
 					<array>
 						<dict>
@@ -991,6 +1021,8 @@ A profile can consist of payloads with different version numbers. For example, c
 			<key>pfm_conditionals</key>
 			<array>
 				<dict>
+					<key>pfm_require</key>
+					<string>always</string>
 					<key>pfm_target_conditions</key>
 					<array>
 						<dict>
@@ -1035,6 +1067,8 @@ A profile can consist of payloads with different version numbers. For example, c
 			<key>pfm_conditionals</key>
 			<array>
 				<dict>
+					<key>pfm_require</key>
+					<string>always</string>
 					<key>pfm_target_conditions</key>
 					<array>
 						<dict>
@@ -1079,6 +1113,8 @@ A profile can consist of payloads with different version numbers. For example, c
 			<key>pfm_conditionals</key>
 			<array>
 				<dict>
+					<key>pfm_require</key>
+					<string>always</string>
 					<key>pfm_target_conditions</key>
 					<array>
 						<dict>
@@ -1123,6 +1159,8 @@ A profile can consist of payloads with different version numbers. For example, c
 			<key>pfm_conditionals</key>
 			<array>
 				<dict>
+					<key>pfm_require</key>
+					<string>always</string>
 					<key>pfm_target_conditions</key>
 					<array>
 						<dict>
@@ -1167,6 +1205,8 @@ A profile can consist of payloads with different version numbers. For example, c
 			<key>pfm_conditionals</key>
 			<array>
 				<dict>
+					<key>pfm_require</key>
+					<string>always</string>
 					<key>pfm_target_conditions</key>
 					<array>
 						<dict>
@@ -1211,6 +1251,8 @@ A profile can consist of payloads with different version numbers. For example, c
 			<key>pfm_conditionals</key>
 			<array>
 				<dict>
+					<key>pfm_require</key>
+					<string>always</string>
 					<key>pfm_target_conditions</key>
 					<array>
 						<dict>
@@ -1255,6 +1297,8 @@ A profile can consist of payloads with different version numbers. For example, c
 			<key>pfm_conditionals</key>
 			<array>
 				<dict>
+					<key>pfm_require</key>
+					<string>always</string>
 					<key>pfm_target_conditions</key>
 					<array>
 						<dict>
@@ -1299,6 +1343,8 @@ A profile can consist of payloads with different version numbers. For example, c
 			<key>pfm_conditionals</key>
 			<array>
 				<dict>
+					<key>pfm_require</key>
+					<string>always</string>
 					<key>pfm_target_conditions</key>
 					<array>
 						<dict>
@@ -1343,6 +1389,8 @@ A profile can consist of payloads with different version numbers. For example, c
 			<key>pfm_conditionals</key>
 			<array>
 				<dict>
+					<key>pfm_require</key>
+					<string>always</string>
 					<key>pfm_target_conditions</key>
 					<array>
 						<dict>
@@ -1387,6 +1435,8 @@ A profile can consist of payloads with different version numbers. For example, c
 			<key>pfm_conditionals</key>
 			<array>
 				<dict>
+					<key>pfm_require</key>
+					<string>always</string>
 					<key>pfm_target_conditions</key>
 					<array>
 						<dict>
@@ -1431,6 +1481,8 @@ A profile can consist of payloads with different version numbers. For example, c
 			<key>pfm_conditionals</key>
 			<array>
 				<dict>
+					<key>pfm_require</key>
+					<string>always</string>
 					<key>pfm_target_conditions</key>
 					<array>
 						<dict>
@@ -1475,6 +1527,8 @@ A profile can consist of payloads with different version numbers. For example, c
 			<key>pfm_conditionals</key>
 			<array>
 				<dict>
+					<key>pfm_require</key>
+					<string>always</string>
 					<key>pfm_target_conditions</key>
 					<array>
 						<dict>
@@ -1519,6 +1573,8 @@ A profile can consist of payloads with different version numbers. For example, c
 			<key>pfm_conditionals</key>
 			<array>
 				<dict>
+					<key>pfm_require</key>
+					<string>always</string>
 					<key>pfm_target_conditions</key>
 					<array>
 						<dict>
@@ -1563,6 +1619,8 @@ A profile can consist of payloads with different version numbers. For example, c
 			<key>pfm_conditionals</key>
 			<array>
 				<dict>
+					<key>pfm_require</key>
+					<string>always</string>
 					<key>pfm_target_conditions</key>
 					<array>
 						<dict>
@@ -1607,6 +1665,8 @@ A profile can consist of payloads with different version numbers. For example, c
 			<key>pfm_conditionals</key>
 			<array>
 				<dict>
+					<key>pfm_require</key>
+					<string>always</string>
 					<key>pfm_target_conditions</key>
 					<array>
 						<dict>
@@ -1651,6 +1711,8 @@ A profile can consist of payloads with different version numbers. For example, c
 			<key>pfm_conditionals</key>
 			<array>
 				<dict>
+					<key>pfm_require</key>
+					<string>always</string>
 					<key>pfm_target_conditions</key>
 					<array>
 						<dict>
@@ -1695,6 +1757,8 @@ A profile can consist of payloads with different version numbers. For example, c
 			<key>pfm_conditionals</key>
 			<array>
 				<dict>
+					<key>pfm_require</key>
+					<string>always</string>
 					<key>pfm_target_conditions</key>
 					<array>
 						<dict>
@@ -1739,6 +1803,8 @@ A profile can consist of payloads with different version numbers. For example, c
 			<key>pfm_conditionals</key>
 			<array>
 				<dict>
+					<key>pfm_require</key>
+					<string>always</string>
 					<key>pfm_target_conditions</key>
 					<array>
 						<dict>
@@ -1783,6 +1849,8 @@ A profile can consist of payloads with different version numbers. For example, c
 			<key>pfm_conditionals</key>
 			<array>
 				<dict>
+					<key>pfm_require</key>
+					<string>always</string>
 					<key>pfm_target_conditions</key>
 					<array>
 						<dict>
@@ -1827,6 +1895,8 @@ A profile can consist of payloads with different version numbers. For example, c
 			<key>pfm_conditionals</key>
 			<array>
 				<dict>
+					<key>pfm_require</key>
+					<string>always</string>
 					<key>pfm_target_conditions</key>
 					<array>
 						<dict>
@@ -1871,6 +1941,8 @@ A profile can consist of payloads with different version numbers. For example, c
 			<key>pfm_conditionals</key>
 			<array>
 				<dict>
+					<key>pfm_require</key>
+					<string>always</string>
 					<key>pfm_target_conditions</key>
 					<array>
 						<dict>
@@ -1915,6 +1987,8 @@ A profile can consist of payloads with different version numbers. For example, c
 			<key>pfm_conditionals</key>
 			<array>
 				<dict>
+					<key>pfm_require</key>
+					<string>always</string>
 					<key>pfm_target_conditions</key>
 					<array>
 						<dict>
@@ -1959,6 +2033,8 @@ A profile can consist of payloads with different version numbers. For example, c
 			<key>pfm_conditionals</key>
 			<array>
 				<dict>
+					<key>pfm_require</key>
+					<string>always</string>
 					<key>pfm_target_conditions</key>
 					<array>
 						<dict>
@@ -2003,6 +2079,8 @@ A profile can consist of payloads with different version numbers. For example, c
 			<key>pfm_conditionals</key>
 			<array>
 				<dict>
+					<key>pfm_require</key>
+					<string>always</string>
 					<key>pfm_target_conditions</key>
 					<array>
 						<dict>
@@ -2047,6 +2125,8 @@ A profile can consist of payloads with different version numbers. For example, c
 			<key>pfm_conditionals</key>
 			<array>
 				<dict>
+					<key>pfm_require</key>
+					<string>always</string>
 					<key>pfm_target_conditions</key>
 					<array>
 						<dict>
@@ -2091,6 +2171,8 @@ A profile can consist of payloads with different version numbers. For example, c
 			<key>pfm_conditionals</key>
 			<array>
 				<dict>
+					<key>pfm_require</key>
+					<string>always</string>
 					<key>pfm_target_conditions</key>
 					<array>
 						<dict>
@@ -2135,6 +2217,8 @@ A profile can consist of payloads with different version numbers. For example, c
 			<key>pfm_conditionals</key>
 			<array>
 				<dict>
+					<key>pfm_require</key>
+					<string>always</string>
 					<key>pfm_target_conditions</key>
 					<array>
 						<dict>
@@ -2179,6 +2263,8 @@ A profile can consist of payloads with different version numbers. For example, c
 			<key>pfm_conditionals</key>
 			<array>
 				<dict>
+					<key>pfm_require</key>
+					<string>always</string>
 					<key>pfm_target_conditions</key>
 					<array>
 						<dict>
@@ -2223,6 +2309,8 @@ A profile can consist of payloads with different version numbers. For example, c
 			<key>pfm_conditionals</key>
 			<array>
 				<dict>
+					<key>pfm_require</key>
+					<string>always</string>
 					<key>pfm_target_conditions</key>
 					<array>
 						<dict>
@@ -2315,169 +2403,6 @@ A profile can consist of payloads with different version numbers. For example, c
 			<key>pfm_type</key>
 			<string>boolean</string>
 		</dict>
-		<!-- TODO:
-			<key>manifestUserNameKey</key>
-			<string>user</string>
-			<key>manifestDisplayNameKey</key>
-			<string>display_name</string>
-			<key>manifestAdminNotesKey</key>
-			<string>notes</string>
-			<key>MoveInstallerItemsWithPkginfosSuppressed</key>
-			<false/>
-			<key>addPackageLastDir</key>
-			<string>/</string>
-			<key>CopyAppDescriptionToPackages</key>
-			<true/>
-			<key>debug</key>
-			<false/>
-			<key>debugLogAllProperties</key>
-			<false/>
-			<key>importWithMunkiimport</key>
-			<false/>
-			<key>installsKeys</key>
-			<array>
-				<string>CFBundleIdentifier</string>
-				<string>CFBundleName</string>
-				<string>CFBundleShortVersionString</string>
-				<string>CFBundleVersion</string>
-				<string>md5checksum</string>
-				<string>minosversion</string>
-				<string>path</string>
-				<string>type</string>
-				<string>version_comparison_key</string>
-			</array>
-			<key>maximumNumberOfLogFiles</key>
-			<integer>7</integer>
-			<key>itemsToCopyKeys</key>
-			<array>
-				<string>destination_path</string>
-				<string>group</string>
-				<string>mode</string>
-				<string>source_item</string>
-				<string>user</string>
-				<string>destination_item</string>
-			</array>
-			<key>openRepositoryLastDir</key>
-			<string>/</string>
-			<key>pkginfoBasicKeys</key>
-			<array>
-				<string>allow_untrusted</string>
-				<string>apple_item</string>
-				<string>autoremove</string>
-				<string>description</string>
-				<string>display_name</string>
-				<string>force_install_after_date</string>
-				<string>forced_install</string>
-				<string>forced_uninstall</string>
-				<string>icon_hash</string>
-				<string>icon_name</string>
-				<string>installable_condition</string>
-				<string>installcheck_script</string>
-				<string>installed_size</string>
-				<string>installer_item_hash</string>
-				<string>installer_item_location</string>
-				<string>installer_item_size</string>
-				<string>installer_type</string>
-				<string>maximum_os_version</string>
-				<string>minimum_munki_version</string>
-				<string>minimum_os_version</string>
-				<string>name</string>
-				<string>notes</string>
-				<string>OnDemand</string>
-				<string>package_path</string>
-				<string>PayloadIdentifier</string>
-				<string>postinstall_script</string>
-				<string>postuninstall_script</string>
-				<string>precache</string>
-				<string>preinstall_script</string>
-				<string>preuninstall_script</string>
-				<string>RestartAction</string>
-				<string>suppress_bundle_relocation</string>
-				<string>unattended_install</string>
-				<string>unattended_uninstall</string>
-				<string>uninstall_method</string>
-				<string>uninstall_script</string>
-				<string>uninstallable</string>
-				<string>uninstallcheck_script</string>
-				<string>uninstaller_item_location</string>
-				<string>version</string>
-			</array>
-			<key>pkginfoArrayKeys</key>
-			<array>
-				<string>blocking_applications</string>
-				<string>catalogs</string>
-				<string>installer_choices_xml</string>
-				<string>installs</string>
-				<string>items_to_copy</string>
-				<string>receipts</string>
-				<string>requires</string>
-				<string>supported_architectures</string>
-				<string>update_for</string>
-			</array>
-			<key>receiptKeys</key>
-			<array>
-				<string>filename</string>
-				<string>installed_size</string>
-				<string>packageid</string>
-				<string>name</string>
-				<string>version</string>
-				<string>optional</string>
-			</array>
-			<key>UseExistingDescriptionForPackages</key>
-			<true/>
-			<key>UseExistingDisplayNameForPackages</key>
-			<true/>
-			<key>UseExistingMinOSVersionForPackages</key>
-			<true/>
-			<key>installerChoicesKeys</key>
-			<array>
-				<string>attributeSetting</string>
-				<string>choiceAttribute</string>
-				<string>choiceIdentifier</string>
-			</array>
-			<key>startupSelectedView</key>
-			<integer>0</integer>
-			<key>startupWhatToDo</key>
-			<integer>1</integer>
-			<key>backupPkginfosBeforeWriting</key>
-			<true/>
-			<key>backupManifestsBeforeWriting</key>
-			<true/>
-			<key>backupKeepDays</key>
-			<integer>30</integer>
-			<key>atomicWrites</key>
-			<true/>
-			<key>iconResizeDefaultWidth</key>
-			<integer>350</integer>
-			<key>iconResizeDefaultHeight</key>
-			<integer>350</integer>
-			<key>showBuiltinTemplateConditions</key>
-			<true/>
-			<key>showConditionsFromOtherManifests</key>
-			<true/>
-			<key>templateConditions</key>
-			<array>
-				<string>os_vers_minor &lt;= 13 AND os_vers_major == 10</string>
-				<string>os_vers_minor &lt;= 14 AND os_vers_major == 10</string>
-				<string>os_vers_minor &lt;= 15 AND os_vers_major == 10</string>
-				<string>(os_vers_minor &gt;= 9 AND os_vers_major == 10) OR os_vers_major &gt;= 11</string>
-				<string>(os_vers_minor &gt;= 10 AND os_vers_major == 10) OR os_vers_major &gt;= 11</string>
-				<string>(os_vers_minor &gt;= 11 AND os_vers_major == 10) OR os_vers_major &gt;= 11</string>
-				<string>(os_vers_minor &gt;= 12 AND os_vers_major == 10) OR os_vers_major &gt;= 11</string>
-				<string>(os_vers_minor &gt;= 13 AND os_vers_major == 10) OR os_vers_major &gt;= 11</string>
-				<string>(os_vers_minor &gt;= 14 AND os_vers_major == 10) OR os_vers_major &gt;= 11</string>
-				<string>(os_vers_minor &gt;= 15 AND os_vers_major == 10) OR os_vers_major &gt;= 11</string>
-				<string>os_vers_major &gt;= 11</string>
-				<string>os_vers_major &gt;= 11 AND os_vers_minor &gt;= 3</string>
-				<string>machine_type == &quot;desktop&quot;</string>
-				<string>machine_type != &quot;desktop&quot;</string>
-				<string>machine_type == &quot;laptop&quot;</string>
-				<string>machine_type != &quot;laptop&quot;</string>
-				<string>arch == &quot;arm64&quot;</string>
-				<string>arch == &quot;x86_64&quot;</string>
-				<string>ANY catalogs CONTAINS &quot;testing&quot;</string>
-			</array>
-		-->
 	</array>
 	<key>pfm_targets</key>
 	<array>
