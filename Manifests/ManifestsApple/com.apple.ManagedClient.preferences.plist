@@ -4,12 +4,14 @@
 <dict>
 	<key>pfm_description</key>
 	<string>Payload for configuring Managed Client preferences, which are sub-payloads containing preference that can be set-once or forced continuously.</string>
+	<key>pfm_documentation_url</key>
+	<string>https://developer.apple.com/documentation/devicemanagement/managedpreferences</string>
 	<key>pfm_domain</key>
 	<string>com.apple.ManagedClient.preferences</string>
 	<key>pfm_format_version</key>
 	<integer>1</integer>
 	<key>pfm_last_modified</key>
-	<date>2026-08-20T16:39:06Z</date>
+	<date>2026-09-07T18:54:49Z</date>
 	<key>pfm_macos_min</key>
 	<string>10.7</string>
 	<key>pfm_platforms</key>
