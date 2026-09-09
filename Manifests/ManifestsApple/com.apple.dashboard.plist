@@ -7,6 +7,8 @@
 	<key>pfm_description_reference</key>
 	<string>The Parental Control Dashboard payload is designated by specifying com.apple.dashboard as the PayloadType value.
 It is used to define a white list of dashboard widgets.</string>
+	<key>pfm_documentation_url</key>
+	<string>https://github.com/apple/device-management/blob/release/mdm/profiles/com.apple.dashboard.yaml</string>
 	<key>pfm_domain</key>
 	<string>com.apple.dashboard</string>
 	<key>pfm_format_version</key>
@@ -14,7 +16,7 @@ It is used to define a white list of dashboard widgets.</string>
 	<key>pfm_interaction</key>
 	<string>exclusive</string>
 	<key>pfm_last_modified</key>
-	<date>2026-08-24T08:00:30Z</date>
+	<date>2026-09-07T18:47:33Z</date>
 	<key>pfm_macos_deprecated</key>
 	<string>10.15</string>
 	<key>pfm_macos_min</key>
