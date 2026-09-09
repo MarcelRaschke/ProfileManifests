@@ -1510,7 +1510,7 @@
 		<key>Configuration</key>
 		<dict>
 			<key>modified</key>
-			<date>2026-08-24T08:00:30Z</date>
+			<date>2026-09-07T18:47:33Z</date>
 			<key>path</key>
 			<string>Manifests/ManifestsApple/Configuration.plist</string>
 			<key>version</key>
@@ -1861,7 +1861,7 @@
 		<key>com.apple.dashboard</key>
 		<dict>
 			<key>modified</key>
-			<date>2026-08-24T08:00:30Z</date>
+			<date>2026-09-07T18:47:33Z</date>
 			<key>path</key>
 			<string>Manifests/ManifestsApple/com.apple.dashboard.plist</string>
 			<key>version</key>
@@ -2050,7 +2050,7 @@
 		<key>com.apple.ironwood.support</key>
 		<dict>
 			<key>modified</key>
-			<date>2026-08-24T08:00:30Z</date>
+			<date>2026-09-07T18:47:33Z</date>
 			<key>path</key>
 			<string>Manifests/ManifestsApple/com.apple.ironwood.support.plist</string>
 			<key>version</key>
@@ -2266,7 +2266,7 @@
 		<key>com.apple.security.FDERecoveryRedirect</key>
 		<dict>
 			<key>modified</key>
-			<date>2026-08-24T08:00:30Z</date>
+			<date>2026-09-07T18:47:33Z</date>
 			<key>path</key>
 			<string>Manifests/ManifestsApple/com.apple.security.FDERecoveryRedirect.plist</string>
 			<key>version</key>
@@ -2311,7 +2311,7 @@
 		<key>com.apple.security.pem</key>
 		<dict>
 			<key>modified</key>
-			<date>2026-08-24T08:00:30Z</date>
+			<date>2026-09-07T18:47:33Z</date>
 			<key>path</key>
 			<string>Manifests/ManifestsApple/com.apple.security.pem.plist</string>
 			<key>version</key>
@@ -2320,7 +2320,7 @@
 		<key>com.apple.security.pkcs1</key>
 		<dict>
 			<key>modified</key>
-			<date>2026-08-24T08:00:30Z</date>
+			<date>2026-09-07T18:47:33Z</date>
 			<key>path</key>
 			<string>Manifests/ManifestsApple/com.apple.security.pkcs1.plist</string>
 			<key>version</key>
@@ -2329,7 +2329,7 @@
 		<key>com.apple.security.pkcs12</key>
 		<dict>
 			<key>modified</key>
-			<date>2026-08-24T08:00:30Z</date>
+			<date>2026-09-07T18:47:33Z</date>
 			<key>path</key>
 			<string>Manifests/ManifestsApple/com.apple.security.pkcs12.plist</string>
 			<key>version</key>
@@ -2562,6 +2562,6 @@
 		</dict>
 	</dict>
 	<key>date</key>
-	<date>2026-09-07T19:05:11Z</date>
+	<date>2026-09-09T22:13:48Z</date>
 </dict>
 </plist>
