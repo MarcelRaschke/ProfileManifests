@@ -4,6 +4,8 @@
 <dict>
 	<key>pfm_description</key>
 	<string>The payload that configures a PKCS #1-formatted certificate.</string>
+	<key>pfm_documentation_url</key>
+	<string>https://developer.apple.com/documentation/devicemanagement/certificatepkcs1</string>
 	<key>pfm_domain</key>
 	<string>com.apple.security.pkcs1</string>
 	<key>pfm_format_version</key>

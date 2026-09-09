@@ -4,6 +4,8 @@
 <dict>
 	<key>pfm_description</key>
 	<string>The payload that configures parental control for dictation and profanity.</string>
+	<key>pfm_documentation_url</key>
+	<string>https://github.com/apple/device-management/blob/release/mdm/profiles/com.apple.ironwood.support.yaml</string>
 	<key>pfm_domain</key>
 	<string>com.apple.ironwood.support</string>
 	<key>pfm_format_version</key>

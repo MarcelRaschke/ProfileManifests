@@ -4,6 +4,8 @@
 <dict>
 	<key>pfm_description</key>
 	<string>Use this section to define general settings</string>
+	<key>pfm_documentation_url</key>
+	<string>https://developer.apple.com/documentation/devicemanagement/toplevel</string>
 	<key>pfm_domain</key>
 	<string>Configuration</string>
 	<key>pfm_format_version</key>
