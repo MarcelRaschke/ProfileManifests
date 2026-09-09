@@ -13,7 +13,7 @@
 	<key>pfm_format_version</key>
 	<integer>1</integer>
 	<key>pfm_last_modified</key>
-	<date>2026-09-09T10:22:44Z</date>
+	<date>2026-09-09T11:38:15Z</date>
 	<key>pfm_platforms</key>
 	<array>
 		<string>macOS</string>
@@ -128,6 +128,76 @@ A profile can consist of payloads with different version numbers. For example, c
 			<string>PayloadOrganization</string>
 			<key>pfm_title</key>
 			<string>Payload Organization</string>
+			<key>pfm_type</key>
+			<string>string</string>
+		</dict>
+		<dict>
+			<key>pfm_name</key>
+			<string>PFC_SegmentedControl_0</string>
+			<key>pfm_range_list_titles</key>
+			<array>
+				<string>Organization</string>
+				<string>Runtime</string>
+				<string>Exit Nodes</string>
+				<string>UI</string>
+			</array>
+			<key>pfm_require</key>
+			<string>always</string>
+			<key>pfm_segments</key>
+			<dict>
+				<key>Exit Nodes</key>
+				<array>
+					<string>AdvertiseExitNode</string>
+					<string>AllowedSuggestedExitNodes</string>
+					<string>ExitNodeID</string>
+					<string>ExitNode.AllowOverride</string>
+					<string>ExitNodeAllowLANAccess</string>
+				</array>
+				<key>Organization</key>
+				<array>
+					<string>ManagedByOrganizationName</string>
+					<string>ManagedByCaption</string>
+					<string>ManagedByURL</string>
+				</array>
+				<key>Runtime</key>
+				<array>
+					<string>TailscaleStartOnLogin</string>
+					<string>AlwaysOn.Enabled</string>
+					<string>AlwaysOn.OverrideWithReason</string>
+					<string>ReconnectAfter</string>
+					<string>ForceEnabled</string>
+					<string>HideDHCP121Warnings</string>
+					<string>Tailnet</string>
+					<string>LoginURL</string>
+					<string>AuthKey</string>
+					<string>AuthBrowser.macos</string>
+					<string>Hostname</string>
+					<string>UseTailscaleDNSSettings</string>
+					<string>UseTailscaleSubnets</string>
+					<string>AllowIncomingConnections</string>
+					<string>PostureChecking</string>
+					<string>KeyExpirationNotice</string>
+					<string>IPAddressCopiedAlertSuppressed</string>
+				</array>
+				<key>UI</key>
+				<array>
+					<string>AppIntroShown</string>
+					<string>CLIIntegration</string>
+					<string>ExitNodesPicker</string>
+					<string>HiddenNetworkDevices</string>
+					<string>HideDockIcon</string>
+					<string>ManageTailnetLock</string>
+					<string>OnboardingFlow</string>
+					<string>TailscaleOnboardingSeen</string>
+					<string>ResetToDefaults</string>
+					<string>RunExitNode</string>
+					<string>StartOnLoginMenuItem</string>
+					<string>TestMenu</string>
+					<string>UpdateMenu</string>
+					<string>VPNOnDemandSettings</string>
+					<string>VPNOnDemandIsUserConfigured</string>
+				</array>
+			</dict>
 			<key>pfm_type</key>
 			<string>string</string>
 		</dict>
