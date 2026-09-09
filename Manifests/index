@@ -1216,20 +1216,20 @@
 		<key>io.tailscale.ipn.macos</key>
 		<dict>
 			<key>modified</key>
-			<date>2026-06-23T15:59:45Z</date>
+			<date>2026-09-09T11:38:15Z</date>
 			<key>path</key>
 			<string>Manifests/ManagedPreferencesApplications/io.tailscale.ipn.macos.plist</string>
 			<key>version</key>
-			<integer>5</integer>
+			<integer>6</integer>
 		</dict>
 		<key>io.tailscale.ipn.macsys</key>
 		<dict>
 			<key>modified</key>
-			<date>2026-08-18T01:19:00Z</date>
+			<date>2026-09-09T11:38:15Z</date>
 			<key>path</key>
 			<string>Manifests/ManagedPreferencesApplications/io.tailscale.ipn.macsys.plist</string>
 			<key>version</key>
-			<integer>5</integer>
+			<integer>6</integer>
 		</dict>
 		<key>menu.nomad.NoMADPro</key>
 		<dict>
@@ -2571,6 +2571,6 @@
 		</dict>
 	</dict>
 	<key>date</key>
-	<date>2026-09-07T19:08:47Z</date>
+	<date>2026-09-09T11:44:40Z</date>
 </dict>
 </plist>
